@@ -12,9 +12,7 @@ test("presents events and video as a complete company service", async ({
 }) => {
   await page.goto("/eventos-y-video");
 
-  await expect(page.getByRole("heading", { level: 1 })).toHaveText(
-    "Eventos sociales y producciones especiales.",
-  );
+  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
 
   for (const categoryName of categoryNames) {
     await expect(

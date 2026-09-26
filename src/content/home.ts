@@ -35,23 +35,23 @@ export const filmRailItems = [
 
 export const reasons = [
   {
-    title: "Planeación adaptada",
+    title: "Definimos el servicio",
     description:
-      "Aterrizamos contigo el objetivo, el ritmo y las prioridades antes de comenzar.",
+      "Acordamos el objetivo, la fecha, la ubicación y las entregas que necesitas.",
   },
   {
-    title: "Producción profesional",
+    title: "Preparamos la producción",
     description:
-      "Cuidamos la captura de imagen y sonido de acuerdo con las necesidades del proyecto.",
+      "Organizamos horarios, equipo, iluminación y responsables antes de comenzar.",
   },
   {
-    title: "Comunicación directa",
+    title: "Realizamos la sesión o cobertura",
     description:
-      "Mantenemos una conversación clara para tomar decisiones y resolver detalles a tiempo.",
+      "Trabajamos con dirección profesional y atención a las prioridades acordadas.",
   },
   {
-    title: "Edición cuidadosa",
+    title: "Editamos y entregamos",
     description:
-      "Seleccionamos y trabajamos cada entrega para conservar coherencia visual y narrativa.",
+      "Seleccionamos y preparamos el material en los formatos y tiempos definidos.",
   },
 ] as const satisfies readonly CompanyPrinciple[];

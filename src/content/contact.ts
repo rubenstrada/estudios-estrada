@@ -10,7 +10,7 @@ export const projectBriefItems = [
       "El día previsto, la ciudad y el espacio donde se realizará el proyecto.",
   },
   {
-    title: "Personas y duración",
+    title: "Número de personas y duración",
     description:
       "Cuántas personas participan y cuánto tiempo requiere la sesión o cobertura.",
   },

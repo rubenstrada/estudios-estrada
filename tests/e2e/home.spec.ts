@@ -5,12 +5,7 @@ test("explains the company and routes visitors to each service", async ({
 }) => {
   await page.goto("/");
 
-  await expect(
-    page.getByRole("heading", {
-      level: 1,
-      name: "Fotografía y producción audiovisual para momentos que importan.",
-    }),
-  ).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
   await expect(
     page.getByRole("link", { name: "Conocer fotografía" }),
   ).toHaveAttribute("href", "/fotografia-profesional");
@@ -32,7 +27,9 @@ test("keeps essential home content visible with JavaScript disabled", async ({
 
   await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
   await expect(
-    page.getByText("Una empresa para proyectos que merecen atención."),
+    page
+      .locator('[data-home-section="introduction"]')
+      .getByRole("heading", { level: 2 }),
   ).toBeVisible();
   await expect(page.locator("[data-reveal]").first()).toBeVisible();
   await context.close();

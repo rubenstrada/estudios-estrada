@@ -2,28 +2,28 @@ import type { PageSeo, RoutePath } from "./types";
 
 export const pageSeo = {
   "/": {
-    title: "Estudios Estrada | Fotografía y producción audiovisual",
+    title: "Estudios Estrada | Fotografía y video profesional",
     description:
-      "Servicios profesionales de fotografía, cobertura de eventos y producción de video para personas, empresas y marcas.",
+      "Sesiones de fotografía, producción de video y cobertura audiovisual para personas, marcas y eventos.",
   },
   "/fotografia-profesional": {
     title: "Fotografía profesional | Estudios Estrada",
     description:
-      "Retratos, fotografía corporativa, producto y sesiones profesionales en estudio o locación.",
+      "Sesiones profesionales, retratos, fotografía corporativa y de producto en estudio o locación.",
   },
   "/eventos-y-video": {
-    title: "Eventos sociales y producciones especiales | Estudios Estrada",
+    title: "Cobertura de eventos y video | Estudios Estrada",
     description:
-      "Fotografía, grabación y producción audiovisual para eventos sociales, empresariales, institucionales y proyectos especiales.",
+      "Fotografía y video profesional para bodas, celebraciones, eventos corporativos y producciones especiales.",
   },
   "/quienes-somos": {
-    title: "Quiénes somos | Estudios Estrada",
+    title: "Equipo de fotografía y video | Estudios Estrada",
     description:
-      "Conoce el enfoque, el proceso y las capacidades de Estudios Estrada para proyectos fotográficos y audiovisuales.",
+      "Conoce al equipo y el proceso de Estudios Estrada para sesiones de fotografía, eventos y producciones audiovisuales.",
   },
   "/contacto": {
     title: "Contacto | Estudios Estrada",
     description:
-      "Cuéntanos qué necesitas y consulta la disponibilidad de Estudios Estrada para tu sesión, evento o producción.",
+      "Consulta disponibilidad para tu sesión de fotografía, cobertura de evento o producción de video con Estudios Estrada.",
   },
 } as const satisfies Record<RoutePath, PageSeo>;

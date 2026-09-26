@@ -10,8 +10,8 @@ import SectionHeading from "../../ui/SectionHeading.astro";
     <Reveal as="div" class="contact-details__channels" distance="small">
       <SectionHeading
         eyebrow="Contacto directo"
-        title="Un primer mensaje es suficiente para comenzar."
-        description="Cuando nos escribas, comparte la información que ya tengas. Nosotros te ayudaremos a definir lo que falte."
+        title="Escríbenos para revisar disponibilidad."
+        description="Comparte la información que ya tengas sobre tu sesión, evento o producción. Te ayudaremos a definir lo que falte."
       />
 
       {siteConfig.contactChannels.length > 0 ? (
@@ -35,8 +35,8 @@ import SectionHeading from "../../ui/SectionHeading.astro";
     </Reveal>
 
     <Reveal as="div" class="contact-details__brief" delay={160}>
-      <p class="eyebrow">Para preparar tu propuesta</p>
-      <h2>Cuatro datos que nos ayudan a orientarte.</h2>
+      <p class="eyebrow">Para orientarte mejor</p>
+      <h2>Estos datos nos ayudan a preparar tu propuesta.</h2>
       <ol>
         {projectBriefItems.map((item, index) => (
           <li data-project-brief-item>

@@ -1,30 +1,30 @@
 export const companyStory = {
-  title: "Trabajamos como una empresa, no como una galería personal.",
+  title: "Producción organizada y atención directa.",
   paragraphs: [
-    "Estudios Estrada reúne fotografía y producción audiovisual para atender proyectos personales, sociales y empresariales con un proceso profesional.",
-    "Nos integramos desde la planeación para entender el objetivo, coordinar la producción y entregar materiales que representen con claridad cada historia, evento u organización.",
+    "Somos fotógrafos y realizadores audiovisuales especializados en sesiones, eventos y producciones para personas, marcas y organizaciones.",
+    "Trabajamos contigo desde la planeación para definir el servicio, coordinar al equipo y entregar fotografías y videos listos para el uso acordado.",
   ],
 } as const;
 
 export const companyPrinciples = [
   {
-    title: "Escucha primero",
+    title: "Entendemos lo que necesitas",
     description:
-      "Cada proyecto comienza entendiendo qué necesitas conservar, comunicar o presentar.",
+      "Comenzamos por el objetivo, el público y el uso que tendrán las fotografías o el video.",
   },
   {
-    title: "Planeación real",
+    title: "Planeamos cada detalle",
     description:
       "Definimos alcance, tiempos, locación, equipo y entregas antes de iniciar la producción.",
   },
   {
-    title: "Producción coordinada",
+    title: "Coordinamos fotografía y video",
     description:
       "Fotografía y video trabajan bajo una misma dirección para mantener coherencia en el resultado.",
   },
   {
-    title: "Entrega cuidada",
+    title: "Editamos y entregamos",
     description:
-      "Seleccionamos y editamos cada material según el uso acordado y la historia que debe contar.",
+      "Preparamos cada material en los formatos, versiones y tiempos definidos contigo.",
   },
 ] as const;

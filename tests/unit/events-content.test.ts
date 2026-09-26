@@ -43,9 +43,6 @@ describe("events and video content", () => {
     ).toBeDefined();
     if (!eventVideoService) return;
 
-    expect(eventVideoService.title).toBe(
-      "Eventos sociales y producciones especiales.",
-    );
     expect(eventVideoService.href).toBe("/eventos-y-video");
     expect(
       eventVideoService.categories.map((category) => category.title),

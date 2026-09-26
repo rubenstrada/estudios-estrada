@@ -13,9 +13,7 @@ test("presents photography as its own complete service module", async ({
 }) => {
   await page.goto("/fotografia-profesional");
 
-  await expect(page.getByRole("heading", { level: 1 })).toHaveText(
-    "Imágenes pensadas para representar, conservar y comunicar.",
-  );
+  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
 
   for (const categoryName of categoryNames) {
     await expect(

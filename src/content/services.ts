@@ -3,26 +3,26 @@ import type { ServiceDetail, ServiceSummary } from "./types";
 export const services = [
   {
     id: "fotografia",
-    eyebrow: "Imagen con intención",
+    eyebrow: "Sesiones y producción",
     title: "Fotografía profesional",
     description:
-      "Creamos fotografías cuidadas para personas, familias, equipos, productos y marcas, en estudio o locación.",
+      "Realizamos retratos, fotografía corporativa y de producto en estudio o locación, con dirección profesional y entregas definidas.",
     href: "/fotografia-profesional",
   },
   {
     id: "eventos",
-    eyebrow: "Presencia y atención",
+    eyebrow: "Cobertura profesional",
     title: "Cobertura de eventos",
     description:
-      "Documentamos celebraciones y encuentros profesionales con una cobertura fotográfica planeada para cada ocasión.",
+      "Cubrimos bodas, celebraciones y eventos corporativos con fotografía, video o ambos servicios.",
     href: "/eventos-y-video",
   },
   {
     id: "video",
-    eyebrow: "Historias en movimiento",
+    eyebrow: "Producción audiovisual",
     title: "Producción de video",
     description:
-      "Grabamos y editamos piezas audiovisuales para conservar un evento, comunicar una idea o presentar una organización.",
+      "Producimos y editamos videos para eventos, marcas, organizaciones y proyectos especiales, desde la planeación hasta la entrega.",
     href: "/eventos-y-video",
   },
 ] as const satisfies readonly ServiceSummary[];
@@ -30,18 +30,18 @@ export const services = [
 export const photographyService = {
   id: "fotografia",
   eyebrow: "Fotografía profesional",
-  title: "Imágenes pensadas para representar, conservar y comunicar.",
+  title: "Sesiones de fotografía para personas, marcas y productos.",
   description:
     "Sesiones profesionales para personas, familias, equipos, productos y marcas, en estudio o locación.",
   href: "/fotografia-profesional",
   introduction:
-    "Cada sesión parte de un objetivo concreto. Definimos el estilo, el espacio y el tipo de entrega para producir fotografías coherentes con tu historia o con la identidad de tu organización.",
+    "Realizamos sesiones en estudio o locación. Antes de fotografiar definimos el uso, el estilo, las personas, el horario y las entregas para producir las imágenes que necesitas.",
   categories: [
     {
       id: "retratos-personales",
       title: "Retratos personales, familiares y de grupo",
       description:
-        "Creamos retratos con dirección cercana y una estética cuidada para conservar una etapa, celebrar un vínculo o reunir a las personas importantes.",
+        "Dirigimos la sesión para que cada persona se sienta cómoda y reciba retratos naturales, cuidados y listos para imprimir o compartir.",
       imageAlt:
         "Retrato profesional de personas o familia realizado por Estudios Estrada",
       mediaStatus: "placeholder",
@@ -50,7 +50,7 @@ export const photographyService = {
       id: "retratos-corporativos",
       title: "Retratos profesionales y corporativos",
       description:
-        "Producimos imágenes consistentes para perfiles, equipos y comunicación institucional, considerando el uso final y la personalidad de la organización.",
+        "Creamos imágenes consistentes para perfiles, equipos, sitios web y comunicación institucional, de acuerdo con la identidad de cada organización.",
       imageAlt:
         "Retrato corporativo con iluminación profesional realizado por Estudios Estrada",
       mediaStatus: "placeholder",
@@ -59,7 +59,7 @@ export const photographyService = {
       id: "estudio-locacion",
       title: "Sesiones en estudio o locación",
       description:
-        "Elegimos el espacio que mejor apoye la intención de las imágenes y planeamos iluminación, encuadres y tiempos antes de la sesión.",
+        "Trabajamos en el espacio que mejor funcione para el resultado buscado y preparamos iluminación, encuadres y tiempos antes de la sesión.",
       imageAlt:
         "Sesión fotográfica profesional en estudio o locación preparada por Estudios Estrada",
       mediaStatus: "placeholder",
@@ -68,7 +68,7 @@ export const photographyService = {
       id: "producto-marca",
       title: "Fotografía de producto y marca",
       description:
-        "Desarrollamos fotografías para presentar productos, procesos y experiencias con una dirección visual alineada a la comunicación de la marca.",
+        "Producimos fotografías para catálogos, redes, campañas y sitios web con una dirección visual alineada a la comunicación de la marca.",
       imageAlt:
         "Fotografía de producto y marca con dirección visual de Estudios Estrada",
       mediaStatus: "placeholder",
@@ -77,7 +77,7 @@ export const photographyService = {
       id: "sesiones-medida",
       title: "Sesiones a la medida",
       description:
-        "Cuando el proyecto no cabe en una categoría, diseñamos la sesión a partir del objetivo, la locación, las personas involucradas y las entregas necesarias.",
+        "Diseñamos una sesión específica cuando el proyecto requiere una locación, dinámica, equipo o formato de entrega diferente.",
       imageAlt:
         "Producción fotográfica personalizada planeada por Estudios Estrada",
       mediaStatus: "placeholder",
@@ -87,19 +87,19 @@ export const photographyService = {
 
 export const eventVideoService = {
   id: "eventos",
-  eyebrow: "Fotografía y producción audiovisual",
-  title: "Eventos sociales y producciones especiales.",
+  eyebrow: "Eventos y video",
+  title: "Cobertura profesional para eventos y producciones.",
   description:
     "Documentamos eventos con fotografía profesional, grabación de video y una producción coordinada de principio a fin.",
   href: "/eventos-y-video",
   introduction:
-    "Planeamos cada cobertura según el tipo de evento, los momentos importantes y las entregas que necesitas. Nuestro equipo puede encargarse de fotografía, video o una producción conjunta para contar la historia completa.",
+    "Cubrimos eventos con fotografía, video o ambos servicios. Antes de la fecha definimos horarios, momentos prioritarios, necesidades técnicas y entregas para coordinar la producción completa.",
   categories: [
     {
       id: "bodas-celebraciones",
       title: "Bodas y celebraciones",
       description:
-        "Cubrimos bodas, aniversarios, graduaciones, cumpleaños y reuniones familiares con atención a los momentos espontáneos, los detalles y las personas que hacen especial cada ocasión.",
+        "Realizamos fotografía y video para bodas, aniversarios, graduaciones, cumpleaños y reuniones familiares, desde los preparativos hasta los momentos principales.",
       imageAlt:
         "Cobertura profesional de una boda o celebración realizada por Estudios Estrada",
       mediaStatus: "placeholder",
@@ -108,7 +108,7 @@ export const eventVideoService = {
       id: "corporativos-institucionales",
       title: "Eventos corporativos e institucionales",
       description:
-        "Documentamos conferencias, inauguraciones, encuentros empresariales, ceremonias y actividades institucionales con una imagen coherente y adecuada para su comunicación.",
+        "Cubrimos conferencias, inauguraciones, encuentros empresariales, ceremonias y actividades institucionales con materiales listos para comunicación interna, prensa o redes.",
       imageAlt:
         "Cobertura fotográfica y audiovisual de un evento corporativo por Estudios Estrada",
       mediaStatus: "placeholder",
@@ -117,7 +117,7 @@ export const eventVideoService = {
       id: "producciones-especiales",
       title: "Producciones especiales",
       description:
-        "Diseñamos coberturas para presentaciones, espectáculos, proyectos culturales y eventos con necesidades particulares de iluminación, sonido, horarios o entregas.",
+        "Planeamos presentaciones, espectáculos y proyectos culturales que requieren iluminación, sonido, horarios o entregas audiovisuales específicas.",
       imageAlt:
         "Producción audiovisual especial planeada y realizada por Estudios Estrada",
       mediaStatus: "placeholder",
@@ -126,7 +126,7 @@ export const eventVideoService = {
       id: "fotografia-video",
       title: "Fotografía y video en una misma cobertura",
       description:
-        "Coordinamos fotografía, grabación y edición como una sola producción para conservar el evento en imágenes consistentes, piezas audiovisuales y versiones listas para compartir.",
+        "Coordinamos fotógrafos y videógrafos bajo un mismo plan para entregar imágenes consistentes, videos editados y versiones listas para publicar.",
       imageAlt:
         "Equipo de fotografía y video de Estudios Estrada trabajando en un evento",
       mediaStatus: "placeholder",
@@ -136,22 +136,22 @@ export const eventVideoService = {
 
 export const serviceProcess = [
   {
-    title: "Conversación inicial",
+    title: "Definimos tu sesión",
     description:
-      "Entendemos el objetivo, el uso de las imágenes y las condiciones del proyecto.",
+      "Acordamos el objetivo, el uso de las imágenes y el tipo de entrega.",
   },
   {
-    title: "Planeación",
+    title: "Preparamos la producción",
     description:
-      "Definimos estilo, locación, horario, participantes y entregas antes de producir.",
+      "Definimos estilo, locación, horario, participantes, iluminación y equipo.",
   },
   {
-    title: "Sesión",
+    title: "Realizamos las fotografías",
     description:
-      "Guiamos la captura con atención a las personas, la luz y los detalles importantes.",
+      "Dirigimos la sesión y cuidamos a las personas, la luz y los detalles importantes.",
   },
   {
-    title: "Edición y entrega",
+    title: "Editamos y entregamos",
     description:
       "Seleccionamos, editamos y preparamos los archivos acordados para su entrega.",
   },
@@ -159,23 +159,23 @@ export const serviceProcess = [
 
 export const eventVideoProcess = [
   {
-    title: "Alcance y prioridades",
+    title: "Definimos la cobertura",
     description:
       "Definimos el tipo de evento, los momentos esenciales y el uso final de las fotografías o el video.",
   },
   {
-    title: "Planeación y logística",
+    title: "Preparamos la logística",
     description:
       "Coordinamos horarios, espacios, iluminación, audio y responsables antes del evento.",
   },
   {
-    title: "Cobertura coordinada",
+    title: "Cubrimos el evento",
     description:
-      "Nuestro equipo trabaja con atención al programa y con la flexibilidad necesaria para registrar lo inesperado.",
+      "Seguimos el programa y nos coordinamos para registrar los momentos y participantes prioritarios.",
   },
   {
-    title: "Edición y entrega",
+    title: "Editamos y entregamos",
     description:
-      "Seleccionamos, editamos y organizamos cada material de acuerdo con las entregas acordadas.",
+      "Seleccionamos y editamos fotografías y video en los formatos y tiempos acordados.",
   },
 ] as const;
