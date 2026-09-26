@@ -1,29 +1,41 @@
 :root {
   color-scheme: light;
 
-  --color-ink: #0b0b0c;
-  --color-ink-soft: #171719;
-  --color-ivory: #f6f2e9;
-  --color-paper: #fffdf8;
-  --color-gold: #b88224;
-  --color-gold-bright: #dfb958;
-  --color-amber: #ef9218;
-  --color-muted: #6d685f;
-  --color-border: rgb(11 11 12 / 14%);
-  --color-border-dark: rgb(255 255 255 / 16%);
-  --color-focus: #f0b644;
+  --color-ink: #18130f;
+  --color-ink-soft: #2a211a;
+  --color-ivory: #f3ecdf;
+  --color-paper: #fffaf1;
+  --color-parchment: #eadcc6;
+  --color-sand: #d8bd91;
+  --color-sepia: #795432;
+  --color-gold: #a9782e;
+  --color-gold-bright: #d6ab5b;
+  --color-gold-soft: #e8d1a4;
+  --color-amber: #c9842e;
+  --color-muted: #71665b;
+  --color-border: rgb(70 48 30 / 17%);
+  --color-border-strong: rgb(70 48 30 / 30%);
+  --color-border-dark: rgb(255 250 241 / 19%);
+  --color-focus: #b9751d;
 
   --gradient-gold: linear-gradient(
     115deg,
-    #8b5c14 0%,
-    #e3ba59 46%,
-    #a36d18 100%
+    #8f621f 0%,
+    #dbb260 46%,
+    #a46e22 100%
   );
+  --gradient-paper: radial-gradient(
+      circle at 82% 8%,
+      rgb(214 171 91 / 20%),
+      transparent 34%
+    ),
+    linear-gradient(135deg, #fffaf1 0%, #f4ead9 100%);
   --gradient-dark: radial-gradient(
-    circle at 75% 15%,
-    #292314 0%,
-    #111112 30%,
-    #080809 72%
+      circle at 78% 12%,
+      rgb(201 132 46 / 28%),
+      transparent 31%
+    ),
+    linear-gradient(135deg, #211811 0%, #100d0a 64%, #080706 100%)
   );
 
   --font-display: Georgia, "Times New Roman", serif;
@@ -44,8 +56,9 @@
   --radius-sm: 0.35rem;
   --radius-md: 0.75rem;
   --radius-lg: 1.25rem;
-  --shadow-soft: 0 1.5rem 4rem rgb(0 0 0 / 12%);
-  --shadow-gold: 0 0.8rem 2.5rem rgb(184 130 36 / 20%);
+  --shadow-soft: 0 1.5rem 4rem rgb(67 43 24 / 12%);
+  --shadow-card: 0 1.25rem 3.5rem rgb(96 66 39 / 9%);
+  --shadow-gold: 0 0.8rem 2.5rem rgb(169 120 46 / 22%);
   --container: 76rem;
   --container-text: 44rem;
   --z-header: 50;

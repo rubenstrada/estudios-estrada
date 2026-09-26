@@ -38,8 +38,8 @@ const { currentPath } = Astro.props;
     right: 0;
     left: 0;
     padding: 1rem;
-    border-top: 1px solid var(--color-border-dark);
-    background: rgb(11 11 12 / 98%);
+    border-top: 1px solid var(--color-border);
+    background: rgb(255 250 241 / 98%);
     box-shadow: var(--shadow-soft);
   }
 
@@ -58,15 +58,15 @@ const { currentPath } = Astro.props;
   a {
     display: block;
     padding: 0.95rem 0.5rem;
-    border-bottom: 1px solid var(--color-border-dark);
-    color: var(--color-ivory);
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-ink);
     font-size: 1rem;
     font-weight: 650;
     text-decoration: none;
   }
 
   a[aria-current="page"] {
-    color: var(--color-gold-bright);
+    color: var(--color-sepia);
   }
 
   @media (min-width: 64rem) {

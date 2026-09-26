@@ -14,7 +14,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
       href="/"
       aria-label="Estudios Estrada, inicio"
     >
-      <BrandLogo variant="gold" priority class="site-header__logo" />
+      <BrandLogo variant="dark" priority class="site-header__logo" />
     </a>
 
     <nav
@@ -65,8 +65,8 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
     z-index: var(--z-header);
     top: 0;
     border-bottom: 1px solid transparent;
-    background: var(--color-ink);
-    color: var(--color-ivory);
+    background: rgb(255 250 241 / 96%);
+    color: var(--color-ink);
     transition:
       background-color 180ms ease,
       border-color 180ms ease,
@@ -74,9 +74,9 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
   }
 
   .site-header[data-scrolled="true"] {
-    border-color: var(--color-border-dark);
-    background: rgb(11 11 12 / 94%);
-    box-shadow: 0 0.5rem 2rem rgb(0 0 0 / 16%);
+    border-color: var(--color-border);
+    background: rgb(255 250 241 / 88%);
+    box-shadow: 0 0.75rem 2.5rem rgb(83 54 31 / 10%);
     backdrop-filter: blur(1rem);
   }
 
@@ -93,6 +93,14 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
     width: fit-content;
     align-items: center;
     text-decoration: none;
+  }
+
+  .site-header__brand::after {
+    width: 2.2rem;
+    height: 1px;
+    margin-left: 0.85rem;
+    background: var(--color-gold);
+    content: "";
   }
 
   :global(.site-header__logo) {
@@ -119,7 +127,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
   .desktop-navigation a {
     position: relative;
     padding-block: 0.65rem;
-    color: rgb(246 242 233 / 78%);
+    color: color-mix(in srgb, var(--color-ink) 72%, transparent);
     font-size: 0.78rem;
     font-weight: 650;
     letter-spacing: 0.04em;
@@ -134,7 +142,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
     left: 0;
     height: 1px;
     transform: scaleX(0);
-    background: var(--color-gold-bright);
+    background: var(--color-gold);
     content: "";
     transform-origin: left;
     transition: transform 160ms ease;
@@ -142,7 +150,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
 
   .desktop-navigation a:hover,
   .desktop-navigation a[aria-current="page"] {
-    color: var(--color-ivory);
+    color: var(--color-ink);
   }
 
   .desktop-navigation a:hover::after,
@@ -161,7 +169,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
     width: 3rem;
     height: 3rem;
     padding: 0.75rem;
-    border: 1px solid var(--color-border-dark);
+    border: 1px solid var(--color-border-strong);
     border-radius: 50%;
     background: transparent;
     color: inherit;

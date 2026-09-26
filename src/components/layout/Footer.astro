@@ -10,7 +10,7 @@ const year = new Date().getFullYear();
   <div class="site-footer__main site-container">
     <div class="site-footer__identity">
       <a href="/" aria-label="Estudios Estrada, inicio">
-        <BrandLogo variant="gold" class="site-footer__logo" />
+        <BrandLogo variant="dark" class="site-footer__logo" />
       </a>
       <p>
         Fotografía profesional y producción audiovisual para personas, eventos y
@@ -55,9 +55,12 @@ const year = new Date().getFullYear();
 <style>
   .site-footer {
     padding-block: clamp(4rem, 8vw, 7rem) 1.5rem;
-    border-top: 1px solid var(--color-border-dark);
-    background: var(--color-ink);
-    color: var(--color-ivory);
+    border-top: 1px solid var(--color-border);
+    background:
+      linear-gradient(90deg, rgb(169 120 46 / 8%) 1px, transparent 1px),
+      var(--color-paper);
+    background-size: min(16vw, 12rem) 100%;
+    color: var(--color-ink);
   }
 
   .site-footer__main {
@@ -78,12 +81,12 @@ const year = new Date().getFullYear();
 
   .site-footer__identity p,
   .site-footer__legal {
-    color: rgb(246 242 233 / 66%);
+    color: var(--color-muted);
   }
 
   .site-footer__heading {
     margin-bottom: 1rem;
-    color: var(--color-gold-bright);
+    color: var(--color-sepia);
     font-size: 0.75rem;
     font-weight: 750;
     letter-spacing: 0.15em;
@@ -104,7 +107,7 @@ const year = new Date().getFullYear();
   }
 
   a:hover {
-    color: var(--color-gold-bright);
+    color: var(--color-sepia);
   }
 
   .site-footer__contact {
@@ -121,7 +124,7 @@ const year = new Date().getFullYear();
     gap: 0.75rem 2rem;
     margin-top: 4rem;
     padding-top: 1.5rem;
-    border-top: 1px solid var(--color-border-dark);
+    border-top: 1px solid var(--color-border);
     font-size: 0.8rem;
   }
 

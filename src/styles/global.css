@@ -9,14 +9,16 @@
 }
 
 html {
-  background: var(--color-ivory);
+  background: var(--color-paper);
   scroll-behavior: smooth;
 }
 
 body {
   min-width: 20rem;
   margin: 0;
-  background: var(--color-ivory);
+  background:
+    radial-gradient(circle at 10% 0%, rgb(232 209 164 / 18%), transparent 24rem),
+    var(--color-ivory);
   color: var(--color-ink);
   font-family: var(--font-body);
   font-size: 1rem;
@@ -85,17 +87,26 @@ p {
 }
 
 .site-section--dark {
-  background: var(--color-ink);
+  background: var(--gradient-dark);
   color: var(--color-ivory);
 }
 
+.site-section--paper {
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
 .eyebrow {
-  color: var(--color-gold);
+  color: var(--color-sepia);
   font-size: 0.75rem;
   font-weight: 750;
   letter-spacing: 0.18em;
   line-height: 1.4;
   text-transform: uppercase;
+}
+
+.site-section--dark .eyebrow {
+  color: var(--color-gold-bright);
 }
 
 .skip-link {

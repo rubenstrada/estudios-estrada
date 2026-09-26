@@ -50,6 +50,7 @@ const {
     transition:
       transform 180ms ease,
       border-color 180ms ease,
+      box-shadow 180ms ease,
       background-color 180ms ease,
       color 180ms ease;
   }
@@ -58,15 +59,24 @@ const {
     transform: translateY(-2px);
   }
 
+  .button-link:active {
+    transform: translateY(0);
+  }
+
   .button-link--primary {
+    border-color: rgb(105 69 23 / 20%);
     background: var(--gradient-gold);
     box-shadow: var(--shadow-gold);
     color: var(--color-ink);
   }
 
+  .button-link--primary:hover {
+    box-shadow: 0 1rem 3rem rgb(169 120 46 / 30%);
+  }
+
   .button-link--secondary {
-    border-color: currentColor;
-    background: transparent;
+    border-color: color-mix(in srgb, currentColor 42%, transparent);
+    background: color-mix(in srgb, currentColor 4%, transparent);
   }
 
   .button-link--text {
@@ -74,7 +84,7 @@ const {
     justify-content: flex-start;
     padding-inline: 0;
     border-radius: 0;
-    color: var(--color-gold);
+    color: var(--color-sepia);
   }
 
   .button-link__arrow {
