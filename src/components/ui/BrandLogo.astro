@@ -1,0 +1,42 @@
+---
+import { Image } from "astro:assets";
+
+import darkAmberLogo from "../../assets/brand/logo-dark-amber.png";
+import darkLogo from "../../assets/brand/logo-dark.png";
+import goldLogo from "../../assets/brand/logo-gold.png";
+
+interface Props {
+  variant: "gold" | "dark" | "dark-amber";
+  priority?: boolean;
+  class?: string;
+}
+
+const { variant, priority = false, class: className } = Astro.props;
+const logos = {
+  gold: goldLogo,
+  dark: darkLogo,
+  "dark-amber": darkAmberLogo,
+};
+const source = logos[variant];
+---
+
+<Image
+  src={source}
+  alt="Estudios Estrada"
+  class:list={["brand-logo", `brand-logo--${variant}`, className]}
+  loading={priority ? "eager" : "lazy"}
+  fetchpriority={priority ? "high" : "auto"}
+  widths={[240, 360, 520, 720]}
+  sizes="(max-width: 48rem) 15rem, 22rem"
+/>
+
+<style>
+  .brand-logo {
+    width: auto;
+    object-fit: contain;
+  }
+
+  .brand-logo--dark {
+    filter: contrast(1.12);
+  }
+</style>

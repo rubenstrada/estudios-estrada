@@ -1,0 +1,63 @@
+---
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+
+type ImageProps = {
+  kind?: "image";
+  src: ImageMetadata;
+  alt: string;
+  width?: number;
+  height?: number;
+  priority?: boolean;
+  class?: string;
+};
+
+type VideoProps = {
+  kind: "video";
+  src: string;
+  poster: ImageMetadata;
+  alt: string;
+  width: number;
+  height: number;
+  class?: string;
+};
+
+type Props = ImageProps | VideoProps;
+const props = Astro.props;
+---
+
+{props.kind === "video" ? (
+  <video
+    class:list={["responsive-media", props.class]}
+    controls
+    preload="metadata"
+    poster={props.poster.src}
+    width={props.width}
+    height={props.height}
+    aria-label={props.alt}
+  >
+    <source src={props.src} />
+  </video>
+) : (
+  <Image
+    src={props.src}
+    alt={props.alt}
+    class:list={["responsive-media", props.class]}
+    width={props.width}
+    height={props.height}
+    loading={props.priority ? "eager" : "lazy"}
+    fetchpriority={props.priority ? "high" : "auto"}
+    widths={[480, 720, 1080, 1440]}
+    sizes="(max-width: 48rem) 100vw, 50vw"
+  />
+)}
+
+<style>
+  .responsive-media {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+    background: var(--color-ink-soft);
+    object-fit: cover;
+  }
+</style>

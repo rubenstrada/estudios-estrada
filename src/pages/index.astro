@@ -1,18 +1,15 @@
 ---
-const title = "Estudios Estrada";
+import { pageSeo } from "../content/pages";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const seo = pageSeo["/"];
 ---
 
-<!doctype html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>{title}</title>
-  </head>
-  <body>
-    <main>
-      <h1>{title}</h1>
+<BaseLayout title={seo.title} description={seo.description} canonicalPath="/">
+  <section class="site-section">
+    <div class="site-container">
+      <h1>Estudios Estrada</h1>
       <p>Fotografía y producción audiovisual.</p>
-    </main>
-  </body>
-</html>
+    </div>
+  </section>
+</BaseLayout>
