@@ -1,0 +1,77 @@
+---
+import { navigation } from "../../content/site";
+
+interface Props {
+  currentPath: string;
+}
+
+const { currentPath } = Astro.props;
+---
+
+<nav
+  id="navegacion-movil"
+  class="mobile-navigation"
+  aria-label="Navegación móvil"
+  data-mobile-menu
+  data-open="false"
+>
+  <ul>
+    {navigation.map((item) => (
+      <li>
+        <a
+          href={item.href}
+          aria-current={currentPath === item.href ? "page" : undefined}
+          data-mobile-link
+        >
+          {item.label}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<style>
+  .mobile-navigation {
+    position: absolute;
+    z-index: var(--z-overlay);
+    top: 100%;
+    right: 0;
+    left: 0;
+    padding: 1rem;
+    border-top: 1px solid var(--color-border-dark);
+    background: rgb(11 11 12 / 98%);
+    box-shadow: var(--shadow-soft);
+  }
+
+  :global(html[data-js="true"]) .mobile-navigation:not([data-open="true"]) {
+    display: none;
+  }
+
+  ul {
+    display: grid;
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+  }
+
+  a {
+    display: block;
+    padding: 0.95rem 0.5rem;
+    border-bottom: 1px solid var(--color-border-dark);
+    color: var(--color-ivory);
+    font-size: 1rem;
+    font-weight: 650;
+    text-decoration: none;
+  }
+
+  a[aria-current="page"] {
+    color: var(--color-gold-bright);
+  }
+
+  @media (min-width: 64rem) {
+    .mobile-navigation {
+      display: none;
+    }
+  }
+</style>

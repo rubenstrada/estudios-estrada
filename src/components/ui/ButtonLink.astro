@@ -4,6 +4,7 @@ interface Props {
   variant?: "primary" | "secondary" | "text";
   external?: boolean;
   class?: string;
+  dataAvailabilityLink?: "header" | "page" | "footer";
 }
 
 const {
@@ -11,6 +12,7 @@ const {
   variant = "primary",
   external = false,
   class: className,
+  dataAvailabilityLink,
 } = Astro.props;
 ---
 
@@ -19,6 +21,7 @@ const {
   class:list={["button-link", `button-link--${variant}`, className]}
   target={external ? "_blank" : undefined}
   rel={external ? "noreferrer" : undefined}
+  data-availability-link={dataAvailabilityLink}
 >
   <span>
     <slot />

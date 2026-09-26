@@ -1,0 +1,27 @@
+---
+import { siteConfig } from "../../content/site";
+import { buildWhatsAppUrl, type AvailabilityInquiry } from "../../lib/whatsapp";
+import ButtonLink from "./ButtonLink.astro";
+
+interface Props {
+  inquiry?: AvailabilityInquiry;
+  placement: "header" | "page" | "footer";
+  class?: string;
+}
+
+const { inquiry = {}, placement, class: className } = Astro.props;
+const whatsappUrl = siteConfig.whatsappNumber
+  ? buildWhatsAppUrl(siteConfig.whatsappNumber, inquiry)
+  : null;
+const href = whatsappUrl ?? "/contacto";
+---
+
+<ButtonLink
+  href={href}
+  external={Boolean(whatsappUrl)}
+  variant={placement === "footer" ? "secondary" : "primary"}
+  class={className}
+  dataAvailabilityLink={placement}
+>
+  Consultar disponibilidad
+</ButtonLink>
