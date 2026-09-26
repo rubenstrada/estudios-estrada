@@ -24,19 +24,12 @@
     #dbb260 46%,
     #a46e22 100%
   );
-  --gradient-paper: radial-gradient(
-      circle at 82% 8%,
-      rgb(214 171 91 / 20%),
-      transparent 34%
-    ),
+  --gradient-paper:
+    radial-gradient(circle at 82% 8%, rgb(214 171 91 / 20%), transparent 34%),
     linear-gradient(135deg, #fffaf1 0%, #f4ead9 100%);
-  --gradient-dark: radial-gradient(
-      circle at 78% 12%,
-      rgb(201 132 46 / 28%),
-      transparent 31%
-    ),
-    linear-gradient(135deg, #211811 0%, #100d0a 64%, #080706 100%)
-  );
+  --gradient-dark:
+    radial-gradient(circle at 78% 12%, rgb(201 132 46 / 28%), transparent 31%),
+    linear-gradient(135deg, #211811 0%, #100d0a 64%, #080706 100%);
 
   --font-display: Georgia, "Times New Roman", serif;
   --font-body:

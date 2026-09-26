@@ -35,8 +35,16 @@ const { title, body, inquiry, tone = "dark" } = Astro.props;
   .closing-cta--dark {
     border-block: 1px solid rgb(214 171 91 / 30%);
     background:
-      radial-gradient(circle at 50% 110%, rgb(201 132 46 / 46%), transparent 38%),
-      radial-gradient(circle at 85% 15%, rgb(214 171 91 / 15%), transparent 24%),
+      radial-gradient(
+        circle at 50% 110%,
+        rgb(201 132 46 / 46%),
+        transparent 38%
+      ),
+      radial-gradient(
+        circle at 85% 15%,
+        rgb(214 171 91 / 15%),
+        transparent 24%
+      ),
       var(--gradient-dark);
     color: var(--color-ivory);
   }

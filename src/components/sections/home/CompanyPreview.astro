@@ -36,7 +36,11 @@ import ButtonLink from "../../ui/ButtonLink.astro";
     overflow: hidden;
     border-top: 1px solid var(--color-border);
     background:
-      radial-gradient(circle at 78% 18%, rgb(232 209 164 / 32%), transparent 22rem),
+      radial-gradient(
+        circle at 78% 18%,
+        rgb(232 209 164 / 32%),
+        transparent 22rem
+      ),
       var(--color-ivory);
   }
 
@@ -117,8 +121,11 @@ import ButtonLink from "../../ui/ButtonLink.astro";
 
   .company-preview__mark > p {
     position: absolute;
-    z-index: 3;
+    z-index: 4;
     bottom: 1rem;
+    padding: 0.3rem 0.55rem;
+    border: 1px solid rgb(121 84 50 / 18%);
+    background: rgb(255 250 241 / 84%);
     color: var(--color-sepia);
     font-size: 0.65rem;
     font-weight: 700;

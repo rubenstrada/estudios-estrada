@@ -17,7 +17,11 @@ body {
   min-width: 20rem;
   margin: 0;
   background:
-    radial-gradient(circle at 10% 0%, rgb(232 209 164 / 18%), transparent 24rem),
+    radial-gradient(
+      circle at 10% 0%,
+      rgb(232 209 164 / 18%),
+      transparent 24rem
+    ),
     var(--color-ivory);
   color: var(--color-ink);
   font-family: var(--font-body);
@@ -84,6 +88,10 @@ p {
 
 .site-section {
   padding-block: clamp(4.5rem, 9vw, 8rem);
+}
+
+[id] {
+  scroll-margin-top: 6rem;
 }
 
 .site-section--dark {

@@ -111,7 +111,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
   }
 
   .desktop-navigation,
-  :global(.site-header__cta) {
+  .site-header__actions :global(.site-header__cta) {
     display: none;
   }
 
@@ -214,7 +214,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
       justify-self: center;
     }
 
-    :global(.site-header__cta) {
+    .site-header__actions :global(.site-header__cta) {
       display: inline-flex;
     }
 
