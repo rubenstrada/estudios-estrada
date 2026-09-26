@@ -57,4 +57,36 @@ describe("project configuration", () => {
 
     expect(readJson("tsconfig.json").extends).toBe("astro/tsconfigs/strict");
   });
+
+  test("declares the static output Cloudflare Workers must deploy", () => {
+    const wranglerPath = resolve(root, "wrangler.json");
+    expect(existsSync(wranglerPath), "wrangler.json should exist").toBe(true);
+
+    if (!existsSync(wranglerPath)) return;
+
+    const wrangler = readJson("wrangler.json") as {
+      name?: string;
+      compatibility_date?: string;
+      assets?: { directory?: string };
+    };
+
+    expect(wrangler.name).toBe("estudios-estrada");
+    expect(wrangler.compatibility_date).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    expect(wrangler.assets?.directory).toBe("./dist");
+  });
+
+  test("pins a compatible Node runtime and local Wrangler command", () => {
+    const packageJson = readJson("package.json") as {
+      engines?: { node?: string };
+      scripts?: Record<string, string>;
+      devDependencies?: Record<string, string>;
+    };
+
+    expect(readFileSync(resolve(root, ".nvmrc"), "utf8").trim()).toBe(
+      "22.13.0",
+    );
+    expect(packageJson.engines?.node).toBe(">=22.13.0");
+    expect(packageJson.scripts?.deploy).toBe("wrangler deploy");
+    expect(packageJson.devDependencies?.wrangler).toBeTruthy();
+  });
 });
