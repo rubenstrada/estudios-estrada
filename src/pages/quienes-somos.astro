@@ -1,4 +1,5 @@
 ---
+import teamPhoto from "../assets/company/equipo-estudios-estrada.png";
 import CompanyProfile from "../components/sections/company/CompanyProfile.astro";
 import ClosingCta from "../components/sections/shared/ClosingCta.astro";
 import EditorialPageHero from "../components/sections/shared/EditorialPageHero.astro";
@@ -19,6 +20,8 @@ const seo = pageSeo["/quienes-somos"];
     introduction="Somos fotógrafos y realizadores audiovisuales. Planeamos y coordinamos sesiones, eventos y producciones para entregar resultados profesionales y listos para su uso."
     index="04"
     caption="Personas · marcas · productos · eventos"
+    image={teamPhoto}
+    imageAlt="Equipo de Estudios Estrada"
   />
   <CompanyProfile />
   <ClosingCta

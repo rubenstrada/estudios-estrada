@@ -4,6 +4,9 @@ test("presents the Estudios Estrada team and process", async ({ page }) => {
   await page.goto("/quienes-somos");
 
   await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+  await expect(
+    page.getByRole("img", { name: "Equipo de Estudios Estrada" }),
+  ).toBeVisible();
   await expect(page.locator("[data-company-principle]")).toHaveCount(4);
   await expect(
     page
