@@ -1,0 +1,40 @@
+---
+import ServiceCategoryGrid from "../components/sections/services/ServiceCategoryGrid.astro";
+import ServiceHero from "../components/sections/services/ServiceHero.astro";
+import ServiceProcess from "../components/sections/services/ServiceProcess.astro";
+import ClosingCta from "../components/sections/shared/ClosingCta.astro";
+import { pageSeo } from "../content/pages";
+import { eventVideoProcess, eventVideoService } from "../content/services";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const seo = pageSeo["/eventos-y-video"];
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.description}
+  canonicalPath="/eventos-y-video"
+>
+  <ServiceHero
+    eyebrow={eventVideoService.eyebrow}
+    title={eventVideoService.title}
+    introduction={eventVideoService.introduction}
+    inquiry={{ service: "evento-video" }}
+  />
+  <ServiceCategoryGrid
+    categories={eventVideoService.categories}
+    eyebrow="Coberturas y producciones"
+    title="Una cobertura pensada para cada tipo de evento."
+    description="Reunimos fotografía, video y planeación de acuerdo con el formato, el ritmo y las entregas que necesita tu proyecto."
+  />
+  <ServiceProcess
+    steps={eventVideoProcess}
+    title="Coordinamos cada momento antes de cubrirlo."
+    description="La preparación nos permite trabajar con discreción, anticipar lo importante y entregar una historia visual coherente."
+  />
+  <ClosingCta
+    title="Cuéntanos qué evento quieres conservar."
+    body="Compártenos el tipo de evento, la fecha, el lugar y si necesitas fotografía, video o ambos. Con esa información podemos proponerte la cobertura adecuada."
+    inquiry={{ service: "evento-video" }}
+  />
+</BaseLayout>

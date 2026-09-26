@@ -12,9 +12,9 @@ export const pageSeo = {
       "Retratos, fotografía corporativa, producto y sesiones profesionales en estudio o locación.",
   },
   "/eventos-y-video": {
-    title: "Eventos y producción de video | Estudios Estrada",
+    title: "Eventos sociales y producciones especiales | Estudios Estrada",
     description:
-      "Cobertura fotográfica, grabación y edición de video para eventos sociales, corporativos e institucionales.",
+      "Fotografía, grabación y producción audiovisual para eventos sociales, empresariales, institucionales y proyectos especiales.",
   },
   "/quienes-somos": {
     title: "Quiénes somos | Estudios Estrada",

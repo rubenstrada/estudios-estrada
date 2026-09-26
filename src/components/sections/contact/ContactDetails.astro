@@ -1,0 +1,157 @@
+---
+import { projectBriefItems } from "../../../content/contact";
+import { siteConfig } from "../../../content/site";
+import Reveal from "../../motion/Reveal.astro";
+import SectionHeading from "../../ui/SectionHeading.astro";
+---
+
+<section class="contact-details site-section">
+  <div class="contact-details__grid site-container">
+    <Reveal as="div" class="contact-details__channels" distance="small">
+      <SectionHeading
+        eyebrow="Contacto directo"
+        title="Un primer mensaje es suficiente para comenzar."
+        description="Cuando nos escribas, comparte la información que ya tengas. Nosotros te ayudaremos a definir lo que falte."
+      />
+
+      {siteConfig.contactChannels.length > 0 ? (
+        <ul>
+          {siteConfig.contactChannels.map((channel) => (
+            <li>
+              <a href={channel.href}>{channel.label}</a>
+              <span>{channel.value}</span>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <div class="contact-details__pending" role="status">
+          <strong>Canales directos por configurar</strong>
+          <p>
+            La estructura está lista. Falta agregar el WhatsApp, teléfono o
+            correo oficial de Estudios Estrada para publicar los enlaces.
+          </p>
+        </div>
+      )}
+    </Reveal>
+
+    <Reveal as="div" class="contact-details__brief" delay={160}>
+      <p class="eyebrow">Para preparar tu propuesta</p>
+      <h2>Cuatro datos que nos ayudan a orientarte.</h2>
+      <ol>
+        {projectBriefItems.map((item, index) => (
+          <li data-project-brief-item>
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <div>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </Reveal>
+  </div>
+</section>
+
+<style>
+  .contact-details {
+    background: var(--color-paper);
+  }
+
+  .contact-details__grid {
+    display: grid;
+    gap: clamp(3rem, 8vw, 7rem);
+  }
+
+  :global(.contact-details__channels),
+  :global(.contact-details__brief) {
+    min-width: 0;
+  }
+
+  .contact-details__channels ul,
+  .contact-details__brief ol {
+    display: grid;
+    margin: 2.5rem 0 0;
+    padding: 0;
+    border-top: 1px solid var(--color-border-strong);
+    list-style: none;
+  }
+
+  .contact-details__channels li {
+    display: grid;
+    gap: 0.2rem;
+    padding-block: 1rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .contact-details__channels a {
+    width: fit-content;
+    font-family: var(--font-display);
+    font-size: 1.65rem;
+  }
+
+  .contact-details__channels li span {
+    color: var(--color-muted);
+    font-size: 0.85rem;
+  }
+
+  .contact-details__pending {
+    display: grid;
+    gap: 0.65rem;
+    margin-top: 2.5rem;
+    padding: 1.4rem;
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-md);
+    background: var(--color-ivory);
+  }
+
+  .contact-details__pending p {
+    color: var(--color-muted);
+  }
+
+  .contact-details__brief {
+    padding: clamp(1.5rem, 4vw, 3rem);
+    border-radius: var(--radius-lg);
+    background: var(--gradient-dark);
+    color: var(--color-ivory);
+  }
+
+  .contact-details__brief > .eyebrow {
+    color: var(--color-gold-bright);
+  }
+
+  .contact-details__brief > h2 {
+    max-width: 34rem;
+    margin-top: 1rem;
+    font-size: clamp(2.4rem, 5vw, 4.7rem);
+  }
+
+  .contact-details__brief li {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    gap: 0.8rem;
+    padding-block: 1rem;
+    border-bottom: 1px solid rgb(255 250 241 / 18%);
+  }
+
+  .contact-details__brief li > span {
+    color: var(--color-gold-bright);
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+  }
+
+  .contact-details__brief h3 {
+    font-size: 1.45rem;
+  }
+
+  .contact-details__brief h3 + p {
+    margin-top: 0.35rem;
+    color: rgb(255 250 241 / 68%);
+  }
+
+  @media (min-width: 58rem) {
+    .contact-details__grid {
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      align-items: start;
+    }
+  }
+</style>

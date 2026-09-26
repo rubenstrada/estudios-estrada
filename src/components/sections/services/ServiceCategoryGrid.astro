@@ -6,19 +6,23 @@ import ServiceCategory from "./ServiceCategory.astro";
 
 interface Props {
   categories: readonly ServiceCategoryContent[];
+  eyebrow?: string;
+  title?: string;
+  description?: string;
 }
 
-const { categories } = Astro.props;
+const {
+  categories,
+  eyebrow = "Servicios de fotografía",
+  title = "Una sesión distinta para cada intención.",
+  description = "Explora cada modalidad y abre solamente el servicio que corresponde a tu proyecto. No necesitas recorrer una galería para saber si podemos ayudarte.",
+} = Astro.props;
 ---
 
 <section class="service-categories site-section">
   <div class="site-container">
     <Reveal as="div">
-      <SectionHeading
-        eyebrow="Servicios de fotografía"
-        title="Una sesión distinta para cada intención."
-        description="Explora cada modalidad y abre solamente el servicio que corresponde a tu proyecto. No necesitas recorrer una galería para saber si podemos ayudarte."
-      />
+      <SectionHeading {eyebrow} {title} {description} />
     </Reveal>
 
     <div class="service-categories__list">

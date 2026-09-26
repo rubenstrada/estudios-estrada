@@ -21,9 +21,10 @@ describe("theme-aware favicon", () => {
     const html = readFileSync(resolve(root, "dist/index.html"), "utf8");
     const iconLinks = html.match(/<link\b[^>]*\brel="icon"[^>]*>/g) ?? [];
 
-    expect(iconLinks).toHaveLength(2);
+    expect(iconLinks).toHaveLength(3);
     expect(iconLinks).toEqual(
       expect.arrayContaining([
+        expect.stringMatching(/href="\/favicon\.png"/),
         expect.stringMatching(
           /href="\/favicon-light\.png\?v=2"[^>]*media="\(prefers-color-scheme: light\)"/,
         ),
@@ -31,6 +32,22 @@ describe("theme-aware favicon", () => {
           /href="\/favicon-dark\.png\?v=2"[^>]*media="\(prefers-color-scheme: dark\)"/,
         ),
       ]),
+    );
+  });
+
+  test("publishes a clean canonical favicon URL", () => {
+    const canonicalPath = resolve(root, "public/favicon.png");
+    const builtPath = resolve(root, "dist/favicon.png");
+    const lightPath = resolve(root, "public/favicon-light.png");
+
+    expect(existsSync(canonicalPath), "public/favicon.png should exist").toBe(
+      true,
+    );
+    expect(existsSync(builtPath), "dist/favicon.png should exist").toBe(true);
+
+    if (!existsSync(canonicalPath) || !existsSync(lightPath)) return;
+    expect(readFileSync(canonicalPath).equals(readFileSync(lightPath))).toBe(
+      true,
     );
   });
 

@@ -1,0 +1,149 @@
+---
+import Reveal from "../../motion/Reveal.astro";
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  introduction: string;
+  index: string;
+  caption: string;
+}
+
+const { eyebrow, title, introduction, index, caption } = Astro.props;
+---
+
+<section class="editorial-page-hero">
+  <div class="editorial-page-hero__grid site-container">
+    <Reveal as="div" class="editorial-page-hero__content" distance="small">
+      <p class="eyebrow">{eyebrow}</p>
+      <h1>{title}</h1>
+      <p>{introduction}</p>
+    </Reveal>
+
+    <Reveal as="div" class="editorial-page-hero__visual" delay={160}>
+      <span>{index}</span>
+      <strong aria-hidden="true">EE</strong>
+      <p>{caption}</p>
+    </Reveal>
+  </div>
+</section>
+
+<style>
+  .editorial-page-hero {
+    overflow: hidden;
+    border-bottom: 1px solid var(--color-border);
+    background:
+      radial-gradient(
+        circle at 80% 18%,
+        rgb(214 171 91 / 28%),
+        transparent 28rem
+      ),
+      var(--color-ivory);
+  }
+
+  .editorial-page-hero__grid {
+    display: grid;
+    min-height: min(47rem, calc(100svh - 4.75rem));
+    align-items: center;
+    gap: clamp(3rem, 8vw, 7rem);
+    padding-block: clamp(4.5rem, 10vw, 8rem);
+  }
+
+  :global(.editorial-page-hero__content) {
+    display: grid;
+    gap: 1.4rem;
+  }
+
+  h1 {
+    max-width: 52rem;
+    font-size: clamp(3.3rem, 8vw, 7rem);
+    letter-spacing: -0.06em;
+  }
+
+  h1 + p {
+    max-width: 43rem;
+    color: var(--color-muted);
+    font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  }
+
+  :global(.editorial-page-hero__visual) {
+    position: relative;
+    display: grid;
+    min-height: 23rem;
+    place-items: center;
+    overflow: hidden;
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-lg);
+    background:
+      linear-gradient(rgb(11 11 12 / 5%) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(11 11 12 / 5%) 1px, transparent 1px),
+      linear-gradient(145deg, #f1dfbd, #bd8124);
+    background-size:
+      4rem 4rem,
+      4rem 4rem,
+      auto;
+    box-shadow: var(--shadow-card);
+  }
+
+  .editorial-page-hero__visual::before,
+  .editorial-page-hero__visual::after {
+    position: absolute;
+    right: -5%;
+    left: -5%;
+    height: 2rem;
+    border-block: 0.4rem dotted rgb(11 11 12 / 24%);
+    content: "";
+  }
+
+  .editorial-page-hero__visual::before {
+    top: 1rem;
+  }
+
+  .editorial-page-hero__visual::after {
+    bottom: 1rem;
+  }
+
+  .editorial-page-hero__visual > span {
+    position: absolute;
+    top: 3.4rem;
+    left: 1.2rem;
+    font-size: 0.7rem;
+    font-weight: 750;
+    letter-spacing: 0.16em;
+  }
+
+  .editorial-page-hero__visual strong {
+    font-family: var(--font-display);
+    font-size: clamp(7rem, 18vw, 12rem);
+    font-weight: 500;
+    letter-spacing: -0.12em;
+    opacity: 0.58;
+  }
+
+  .editorial-page-hero__visual p {
+    position: absolute;
+    right: 1rem;
+    bottom: 3.3rem;
+    left: 1rem;
+    padding: 0.8rem 1rem;
+    border-radius: var(--radius-sm);
+    background: rgb(255 250 241 / 84%);
+    color: var(--color-sepia);
+    font-size: 0.68rem;
+    font-weight: 750;
+    letter-spacing: 0.14em;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  @media (min-width: 60rem) {
+    .editorial-page-hero__grid {
+      min-height: min(47rem, calc(100svh - 5.5rem));
+      grid-template-columns: minmax(0, 1.25fr) minmax(20rem, 0.75fr);
+    }
+
+    :global(.editorial-page-hero__visual) {
+      min-height: 34rem;
+    }
+  }
+</style>

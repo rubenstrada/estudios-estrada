@@ -85,6 +85,55 @@ export const photographyService = {
   ],
 } as const satisfies ServiceDetail;
 
+export const eventVideoService = {
+  id: "eventos",
+  eyebrow: "Fotografía y producción audiovisual",
+  title: "Eventos sociales y producciones especiales.",
+  description:
+    "Documentamos eventos con fotografía profesional, grabación de video y una producción coordinada de principio a fin.",
+  href: "/eventos-y-video",
+  introduction:
+    "Planeamos cada cobertura según el tipo de evento, los momentos importantes y las entregas que necesitas. Nuestro equipo puede encargarse de fotografía, video o una producción conjunta para contar la historia completa.",
+  categories: [
+    {
+      id: "bodas-celebraciones",
+      title: "Bodas y celebraciones",
+      description:
+        "Cubrimos bodas, aniversarios, graduaciones, cumpleaños y reuniones familiares con atención a los momentos espontáneos, los detalles y las personas que hacen especial cada ocasión.",
+      imageAlt:
+        "Cobertura profesional de una boda o celebración realizada por Estudios Estrada",
+      mediaStatus: "placeholder",
+    },
+    {
+      id: "corporativos-institucionales",
+      title: "Eventos corporativos e institucionales",
+      description:
+        "Documentamos conferencias, inauguraciones, encuentros empresariales, ceremonias y actividades institucionales con una imagen coherente y adecuada para su comunicación.",
+      imageAlt:
+        "Cobertura fotográfica y audiovisual de un evento corporativo por Estudios Estrada",
+      mediaStatus: "placeholder",
+    },
+    {
+      id: "producciones-especiales",
+      title: "Producciones especiales",
+      description:
+        "Diseñamos coberturas para presentaciones, espectáculos, proyectos culturales y eventos con necesidades particulares de iluminación, sonido, horarios o entregas.",
+      imageAlt:
+        "Producción audiovisual especial planeada y realizada por Estudios Estrada",
+      mediaStatus: "placeholder",
+    },
+    {
+      id: "fotografia-video",
+      title: "Fotografía y video en una misma cobertura",
+      description:
+        "Coordinamos fotografía, grabación y edición como una sola producción para conservar el evento en imágenes consistentes, piezas audiovisuales y versiones listas para compartir.",
+      imageAlt:
+        "Equipo de fotografía y video de Estudios Estrada trabajando en un evento",
+      mediaStatus: "placeholder",
+    },
+  ],
+} as const satisfies ServiceDetail;
+
 export const serviceProcess = [
   {
     title: "Conversación inicial",
@@ -105,5 +154,28 @@ export const serviceProcess = [
     title: "Edición y entrega",
     description:
       "Seleccionamos, editamos y preparamos los archivos acordados para su entrega.",
+  },
+] as const;
+
+export const eventVideoProcess = [
+  {
+    title: "Alcance y prioridades",
+    description:
+      "Definimos el tipo de evento, los momentos esenciales y el uso final de las fotografías o el video.",
+  },
+  {
+    title: "Planeación y logística",
+    description:
+      "Coordinamos horarios, espacios, iluminación, audio y responsables antes del evento.",
+  },
+  {
+    title: "Cobertura coordinada",
+    description:
+      "Nuestro equipo trabaja con atención al programa y con la flexibilidad necesaria para registrar lo inesperado.",
+  },
+  {
+    title: "Edición y entrega",
+    description:
+      "Seleccionamos, editamos y organizamos cada material de acuerdo con las entregas acordadas.",
   },
 ] as const;

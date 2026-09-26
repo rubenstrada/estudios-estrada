@@ -9,19 +9,23 @@ interface ProcessStep {
 
 interface Props {
   steps: readonly ProcessStep[];
+  eyebrow?: string;
+  title?: string;
+  description?: string;
 }
 
-const { steps } = Astro.props;
+const {
+  steps,
+  eyebrow = "Proceso",
+  title = "Planeamos antes de encender la cámara.",
+  description = "Un proceso claro nos permite cuidar la experiencia y concentrarnos en el resultado que necesitas.",
+} = Astro.props;
 ---
 
 <section class="service-process site-section">
   <div class="site-container">
     <Reveal as="div">
-      <SectionHeading
-        eyebrow="Proceso"
-        title="Planeamos antes de encender la cámara."
-        description="Un proceso claro nos permite cuidar la experiencia y concentrarnos en el resultado que necesitas."
-      />
+      <SectionHeading {eyebrow} {title} {description} />
     </Reveal>
 
     <ol class="service-process__steps">

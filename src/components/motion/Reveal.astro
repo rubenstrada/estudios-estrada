@@ -4,6 +4,7 @@ interface Props {
   delay?: 0 | 80 | 160 | 240;
   distance?: "small" | "medium";
   class?: string;
+  [attribute: string]: unknown;
 }
 
 const {
@@ -11,10 +12,12 @@ const {
   delay = 0,
   distance = "medium",
   class: className,
+  ...attributes
 } = Astro.props;
 ---
 
 <Tag
+  {...attributes}
   class:list={["reveal", className]}
   data-reveal
   data-reveal-delay={delay}

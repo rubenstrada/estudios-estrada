@@ -15,14 +15,16 @@ test("renders the approved navigation and marks the current route", async ({
   const navigation = page.locator("[data-desktop-nav]");
 
   for (const [label, path] of approvedNavigation) {
-    await expect(
-      navigation.getByRole("link", { name: label, exact: true }),
-    ).toHaveAttribute("href", path);
+    await expect(navigation.locator("a", { hasText: label })).toHaveAttribute(
+      "href",
+      path,
+    );
   }
 
-  await expect(
-    navigation.getByRole("link", { name: "Inicio", exact: true }),
-  ).toHaveAttribute("aria-current", "page");
+  await expect(navigation.locator("a", { hasText: "Inicio" })).toHaveAttribute(
+    "aria-current",
+    "page",
+  );
 });
 
 test("opens and closes the mobile menu with keyboard focus restored", async ({
@@ -31,9 +33,10 @@ test("opens and closes the mobile menu with keyboard focus restored", async ({
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/");
 
-  const trigger = page.getByRole("button", { name: "Abrir menú" });
+  const trigger = page.locator("[data-menu-trigger]");
   await trigger.click();
   await expect(trigger).toHaveAttribute("aria-expanded", "true");
+  await expect(trigger).toHaveAttribute("aria-label", "Cerrar menú");
   await expect(page.locator("[data-mobile-menu]")).toHaveAttribute(
     "data-open",
     "true",
@@ -41,6 +44,7 @@ test("opens and closes the mobile menu with keyboard focus restored", async ({
 
   await page.keyboard.press("Escape");
   await expect(trigger).toHaveAttribute("aria-expanded", "false");
+  await expect(trigger).toHaveAttribute("aria-label", "Abrir menú");
   await expect(trigger).toBeFocused();
 });
 

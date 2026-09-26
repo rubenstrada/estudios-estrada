@@ -1,0 +1,28 @@
+---
+import CompanyProfile from "../components/sections/company/CompanyProfile.astro";
+import ClosingCta from "../components/sections/shared/ClosingCta.astro";
+import EditorialPageHero from "../components/sections/shared/EditorialPageHero.astro";
+import { pageSeo } from "../content/pages";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const seo = pageSeo["/quienes-somos"];
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.description}
+  canonicalPath="/quienes-somos"
+>
+  <EditorialPageHero
+    eyebrow="Quiénes somos"
+    title="Un equipo que se integra a tu proyecto."
+    introduction="Somos una empresa de fotografía y producción audiovisual. Escuchamos, planeamos y coordinamos cada proyecto para entregar resultados profesionales y coherentes."
+    index="04"
+    caption="Personas · historias · marcas · eventos"
+  />
+  <CompanyProfile />
+  <ClosingCta
+    title="Hagamos una producción con intención."
+    body="Cuéntanos qué quieres conservar o comunicar y construiremos contigo el siguiente paso."
+  />
+</BaseLayout>
