@@ -1,0 +1,42 @@
+---
+import type { ServiceCategoryContent } from "../../../content/types";
+import Reveal from "../../motion/Reveal.astro";
+import SectionHeading from "../../ui/SectionHeading.astro";
+import ServiceCategory from "./ServiceCategory.astro";
+
+interface Props {
+  categories: readonly ServiceCategoryContent[];
+}
+
+const { categories } = Astro.props;
+---
+
+<section class="service-categories site-section">
+  <div class="site-container">
+    <Reveal as="div">
+      <SectionHeading
+        eyebrow="Servicios de fotografía"
+        title="Una sesión distinta para cada intención."
+        description="Explora cada modalidad y abre solamente el servicio que corresponde a tu proyecto. No necesitas recorrer una galería para saber si podemos ayudarte."
+      />
+    </Reveal>
+
+    <div class="service-categories__list">
+      {categories.map((category, index) => (
+        <ServiceCategory {category} {index} />
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .service-categories {
+    background: var(--color-paper);
+  }
+
+  .service-categories__list {
+    display: grid;
+    gap: clamp(5rem, 12vw, 10rem);
+    margin-top: clamp(4rem, 9vw, 8rem);
+  }
+</style>

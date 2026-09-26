@@ -1,0 +1,145 @@
+---
+import type { ServiceCategoryContent } from "../../../content/types";
+import Reveal from "../../motion/Reveal.astro";
+
+interface Props {
+  category: ServiceCategoryContent;
+  index: number;
+}
+
+const { category, index } = Astro.props;
+const number = String(index + 1).padStart(2, "0");
+const reverse = index % 2 === 1;
+---
+
+<article
+  class:list={["service-category", reverse && "service-category--reverse"]}
+>
+  <Reveal as="div" class="service-category__media" delay={80}>
+    <div
+      class="service-category__placeholder"
+      role="img"
+      aria-label={category.imageAlt}
+      data-service-media
+      data-media-status={category.mediaStatus}
+    >
+      <span>{number}</span>
+      <strong aria-hidden="true">EE</strong>
+      <p>Imagen de servicio en preparación</p>
+    </div>
+  </Reveal>
+
+  <Reveal as="div" class="service-category__content" distance="small">
+    <p class="eyebrow">Servicio {number}</p>
+    <h2>{category.title}</h2>
+    <p>{category.description}</p>
+  </Reveal>
+</article>
+
+<style>
+  .service-category {
+    display: grid;
+    align-items: center;
+    gap: clamp(2rem, 6vw, 6rem);
+  }
+
+  :global(.service-category__media) {
+    min-width: 0;
+  }
+
+  .service-category__placeholder {
+    position: relative;
+    display: grid;
+    aspect-ratio: 4 / 3;
+    place-items: center;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    background:
+      radial-gradient(
+        circle at 25% 20%,
+        rgb(255 255 255 / 76%),
+        transparent 25%
+      ),
+      linear-gradient(145deg, #ead5aa, #bd8124);
+    box-shadow: 0 1.5rem 4rem rgb(94 58 4 / 10%);
+  }
+
+  .service-category__placeholder::before,
+  .service-category__placeholder::after {
+    position: absolute;
+    right: -8%;
+    left: -8%;
+    height: 2.6rem;
+    border-block: 0.55rem dotted rgb(11 11 12 / 22%);
+    content: "";
+  }
+
+  .service-category__placeholder::before {
+    top: 1.2rem;
+  }
+
+  .service-category__placeholder::after {
+    bottom: 1.2rem;
+  }
+
+  .service-category__placeholder > span {
+    position: absolute;
+    z-index: 1;
+    top: 1rem;
+    left: 1.25rem;
+    font-size: 0.68rem;
+    font-weight: 750;
+    letter-spacing: 0.18em;
+  }
+
+  .service-category__placeholder strong {
+    font-family: var(--font-display);
+    font-size: clamp(5rem, 18vw, 10rem);
+    font-weight: 500;
+    letter-spacing: -0.1em;
+    opacity: 0.46;
+  }
+
+  .service-category__placeholder p {
+    position: absolute;
+    right: 1rem;
+    bottom: 0.85rem;
+    left: 1rem;
+    font-size: 0.63rem;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  :global(.service-category__content) {
+    display: grid;
+    gap: 1.2rem;
+  }
+
+  h2 {
+    max-width: 35rem;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    letter-spacing: -0.05em;
+  }
+
+  h2 + p {
+    max-width: 35rem;
+    color: var(--color-muted);
+    font-size: clamp(1rem, 1.6vw, 1.16rem);
+  }
+
+  @media (min-width: 52rem) {
+    .service-category {
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    }
+
+    .service-category--reverse :global(.service-category__media) {
+      order: 2;
+    }
+
+    .service-category--reverse :global(.service-category__content) {
+      order: 1;
+    }
+  }
+</style>

@@ -1,0 +1,31 @@
+---
+import ServiceCategoryGrid from "../components/sections/services/ServiceCategoryGrid.astro";
+import ServiceHero from "../components/sections/services/ServiceHero.astro";
+import ServiceProcess from "../components/sections/services/ServiceProcess.astro";
+import ClosingCta from "../components/sections/shared/ClosingCta.astro";
+import { pageSeo } from "../content/pages";
+import { photographyService, serviceProcess } from "../content/services";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const seo = pageSeo["/fotografia-profesional"];
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.description}
+  canonicalPath="/fotografia-profesional"
+>
+  <ServiceHero
+    eyebrow={photographyService.eyebrow}
+    title={photographyService.title}
+    introduction={photographyService.introduction}
+    inquiry={{ service: "fotografia" }}
+  />
+  <ServiceCategoryGrid categories={photographyService.categories} />
+  <ServiceProcess steps={serviceProcess} />
+  <ClosingCta
+    title="Conversemos sobre la sesión que necesitas."
+    body="Cuéntanos para qué usarás las imágenes, quién participará y si prefieres estudio o locación. Con esa información podemos proponerte el siguiente paso."
+    inquiry={{ service: "fotografia" }}
+  />
+</BaseLayout>

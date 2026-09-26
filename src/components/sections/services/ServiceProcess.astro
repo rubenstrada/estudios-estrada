@@ -1,0 +1,92 @@
+---
+import Reveal from "../../motion/Reveal.astro";
+import SectionHeading from "../../ui/SectionHeading.astro";
+
+interface ProcessStep {
+  title: string;
+  description: string;
+}
+
+interface Props {
+  steps: readonly ProcessStep[];
+}
+
+const { steps } = Astro.props;
+---
+
+<section class="service-process site-section">
+  <div class="site-container">
+    <Reveal as="div">
+      <SectionHeading
+        eyebrow="Proceso"
+        title="Planeamos antes de encender la cámara."
+        description="Un proceso claro nos permite cuidar la experiencia y concentrarnos en el resultado que necesitas."
+      />
+    </Reveal>
+
+    <ol class="service-process__steps">
+      {steps.map((step, index) => (
+        <Reveal
+          as="li"
+          delay={((index % 4) * 80) as 0 | 80 | 160 | 240}
+          distance="small"
+        >
+          <span>{String(index + 1).padStart(2, "0")}</span>
+          <h3>{step.title}</h3>
+          <p>{step.description}</p>
+        </Reveal>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .service-process {
+    background: #eee5d4;
+  }
+
+  .service-process__steps {
+    display: grid;
+    margin: clamp(3rem, 7vw, 6rem) 0 0;
+    padding: 0;
+    border-top: 1px solid var(--color-border);
+    list-style: none;
+  }
+
+  .service-process__steps :global(.reveal) {
+    display: grid;
+    align-content: start;
+    gap: 0.8rem;
+    padding: 1.6rem 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .service-process__steps span {
+    color: var(--color-gold);
+    font-size: 0.7rem;
+    font-weight: 750;
+    letter-spacing: 0.16em;
+  }
+
+  h3 {
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+  }
+
+  h3 + p {
+    max-width: 28rem;
+    color: var(--color-muted);
+  }
+
+  @media (min-width: 52rem) {
+    .service-process__steps {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      border-left: 1px solid var(--color-border);
+    }
+
+    .service-process__steps :global(.reveal) {
+      min-height: 17rem;
+      padding: 2rem;
+      border-right: 1px solid var(--color-border);
+    }
+  }
+</style>

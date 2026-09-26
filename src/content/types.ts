@@ -40,10 +40,15 @@ export interface ServiceSummary {
 
 export interface ServiceDetail extends ServiceSummary {
   introduction: string;
-  categories: readonly {
-    title: string;
-    description: string;
-  }[];
+  categories: readonly ServiceCategoryContent[];
+}
+
+export interface ServiceCategoryContent {
+  id: string;
+  title: string;
+  description: string;
+  imageAlt: string;
+  mediaStatus: "placeholder" | "approved";
 }
 
 export interface PageSeo {
