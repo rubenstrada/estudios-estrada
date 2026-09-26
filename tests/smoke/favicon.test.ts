@@ -25,10 +25,10 @@ describe("theme-aware favicon", () => {
     expect(iconLinks).toEqual(
       expect.arrayContaining([
         expect.stringMatching(
-          /href="\/favicon-light\.png"[^>]*media="\(prefers-color-scheme: light\)"/,
+          /href="\/favicon-light\.png\?v=2"[^>]*media="\(prefers-color-scheme: light\)"/,
         ),
         expect.stringMatching(
-          /href="\/favicon-dark\.png"[^>]*media="\(prefers-color-scheme: dark\)"/,
+          /href="\/favicon-dark\.png\?v=2"[^>]*media="\(prefers-color-scheme: dark\)"/,
         ),
       ]),
     );
@@ -79,6 +79,27 @@ describe("theme-aware favicon", () => {
         return mask;
       }),
     );
+
+    for (const mask of masks) {
+      let minX = 128;
+      let minY = 128;
+      let maxX = -1;
+      let maxY = -1;
+
+      for (let index = 0; index < mask.length; index += 1) {
+        if (!mask[index]) continue;
+
+        const x = index % 128;
+        const y = Math.floor(index / 128);
+        minX = Math.min(minX, x);
+        minY = Math.min(minY, y);
+        maxX = Math.max(maxX, x);
+        maxY = Math.max(maxY, y);
+      }
+
+      expect((maxX - minX + 1) / 128).toBeGreaterThan(0.84);
+      expect((maxY - minY + 1) / 128).toBeGreaterThan(0.9);
+    }
 
     let intersection = 0;
     let union = 0;
