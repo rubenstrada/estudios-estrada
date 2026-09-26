@@ -1,0 +1,139 @@
+---
+import { services } from "../../../content/services";
+import Reveal from "../../motion/Reveal.astro";
+import ButtonLink from "../../ui/ButtonLink.astro";
+import SectionHeading from "../../ui/SectionHeading.astro";
+
+const linkLabels = {
+  fotografia: "Conocer fotografía",
+  eventos: "Conocer eventos",
+  video: "Conocer video",
+};
+---
+
+<section
+  id="servicios"
+  class="service-choices site-section"
+  data-home-section="services"
+>
+  <div class="site-container">
+    <Reveal as="div">
+      <SectionHeading
+        eyebrow="Servicios"
+        title="Una mirada profesional para cada proyecto."
+        description="Elige el punto de partida. Definimos contigo el alcance, la cobertura y las entregas antes de producir."
+      />
+    </Reveal>
+
+    <div class="service-choices__grid">
+      {services.map((service, index) => (
+        <Reveal as="article" delay={index === 0 ? 0 : index === 1 ? 80 : 160}>
+          <div class="service-card__visual" aria-hidden="true">
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <b>EE</b>
+          </div>
+          <div class="service-card__body">
+            <p class="eyebrow">{service.eyebrow}</p>
+            <h3>{service.title}</h3>
+            <p>{service.description}</p>
+            <ButtonLink href={service.href} variant="text">
+              {linkLabels[service.id]}
+            </ButtonLink>
+          </div>
+        </Reveal>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .service-choices {
+    background: var(--color-ivory);
+  }
+
+  .service-choices__grid {
+    display: grid;
+    gap: 1rem;
+    margin-top: clamp(3rem, 7vw, 6rem);
+  }
+
+  .service-choices__grid :global(.reveal) {
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-paper);
+    box-shadow: 0 1.5rem 4rem rgb(0 0 0 / 4%);
+  }
+
+  .service-card__visual {
+    position: relative;
+    display: grid;
+    min-height: 15rem;
+    place-items: center;
+    overflow: hidden;
+    background:
+      linear-gradient(145deg, rgb(223 185 88 / 20%), transparent 50%),
+      var(--color-ink-soft);
+    color: var(--color-gold-bright);
+  }
+
+  .service-card__visual::before,
+  .service-card__visual::after {
+    position: absolute;
+    right: -10%;
+    left: -10%;
+    height: 2.5rem;
+    border-block: 0.5rem dotted rgb(223 185 88 / 42%);
+    content: "";
+  }
+
+  .service-card__visual::before {
+    top: 1.25rem;
+  }
+
+  .service-card__visual::after {
+    bottom: 1.25rem;
+  }
+
+  .service-card__visual span {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+  }
+
+  .service-card__visual b {
+    font-family: var(--font-display);
+    font-size: clamp(5rem, 12vw, 8rem);
+    font-weight: 500;
+    letter-spacing: -0.08em;
+    opacity: 0.82;
+  }
+
+  .service-card__body {
+    display: grid;
+    align-content: start;
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+
+  h3 {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    letter-spacing: -0.035em;
+  }
+
+  h3 + p {
+    color: var(--color-muted);
+  }
+
+  @media (min-width: 48rem) {
+    .service-choices__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .service-card__visual {
+      min-height: 20rem;
+    }
+  }
+</style>

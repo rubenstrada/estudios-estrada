@@ -1,0 +1,78 @@
+---
+interface Props {
+  as?: keyof HTMLElementTagNameMap;
+  delay?: 0 | 80 | 160 | 240;
+  distance?: "small" | "medium";
+  class?: string;
+}
+
+const {
+  as: Tag = "div",
+  delay = 0,
+  distance = "medium",
+  class: className,
+} = Astro.props;
+---
+
+<Tag
+  class:list={["reveal", className]}
+  data-reveal
+  data-reveal-delay={delay}
+  data-reveal-distance={distance}
+>
+  <slot />
+</Tag>
+
+<script>
+  import "../../scripts/reveal";
+</script>
+
+<style>
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  :global(html[data-js="true"]) .reveal[data-reveal-state="pending"] {
+    opacity: 0;
+    transform: translateY(var(--reveal-distance, 1rem));
+  }
+
+  :global(html[data-js="true"]) .reveal[data-reveal-state="visible"] {
+    opacity: 1;
+    transform: translateY(0);
+    transition:
+      opacity 720ms cubic-bezier(0.2, 0.8, 0.2, 1),
+      transform 720ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  .reveal[data-reveal-distance="small"] {
+    --reveal-distance: 0.6rem;
+  }
+
+  .reveal[data-reveal-distance="medium"] {
+    --reveal-distance: 1.4rem;
+  }
+
+  .reveal[data-reveal-delay="80"] {
+    --reveal-delay: 80ms;
+  }
+
+  .reveal[data-reveal-delay="160"] {
+    --reveal-delay: 160ms;
+  }
+
+  .reveal[data-reveal-delay="240"] {
+    --reveal-delay: 240ms;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal,
+    :global(html[data-js="true"]) .reveal[data-reveal-state] {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+</style>

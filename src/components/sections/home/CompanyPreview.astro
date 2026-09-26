@@ -1,0 +1,91 @@
+---
+import Reveal from "../../motion/Reveal.astro";
+import BrandLogo from "../../ui/BrandLogo.astro";
+import ButtonLink from "../../ui/ButtonLink.astro";
+---
+
+<section class="company-preview site-section" data-home-section="company">
+  <div class="company-preview__grid site-container">
+    <Reveal as="div" class="company-preview__mark">
+      <BrandLogo variant="dark-amber" class="company-preview__logo" />
+    </Reveal>
+
+    <Reveal as="div" class="company-preview__content" delay={80}>
+      <p class="eyebrow">Quiénes somos</p>
+      <h2>Un estudio que trabaja como parte de tu proyecto.</h2>
+      <p>
+        Nos interesa entender qué necesitas comunicar o conservar. Por eso
+        nuestro trabajo comienza con una conversación y continúa con un proceso
+        ordenado de producción, edición y entrega.
+      </p>
+      <ButtonLink href="/quienes-somos" variant="text">
+        Conocer Estudios Estrada
+      </ButtonLink>
+    </Reveal>
+  </div>
+</section>
+
+<style>
+  .company-preview {
+    overflow: hidden;
+    background: var(--color-paper);
+  }
+
+  .company-preview__grid {
+    display: grid;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  :global(.company-preview__mark) {
+    position: relative;
+    display: grid;
+    min-height: 24rem;
+    place-items: center;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(150deg, #f2e7cf, #d7aa53 210%);
+  }
+
+  .company-preview__mark::before {
+    position: absolute;
+    width: 90%;
+    aspect-ratio: 1;
+    border: 1px solid rgb(11 11 12 / 12%);
+    border-radius: 50%;
+    content: "";
+  }
+
+  :global(.company-preview__logo) {
+    position: relative;
+    width: min(78%, 25rem);
+    height: auto;
+  }
+
+  :global(.company-preview__content) {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  h2 {
+    font-size: clamp(2.6rem, 6vw, 5.5rem);
+    letter-spacing: -0.05em;
+  }
+
+  h2 + p {
+    max-width: 38rem;
+    color: var(--color-muted);
+    font-size: 1.1rem;
+  }
+
+  @media (min-width: 56rem) {
+    .company-preview__grid {
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: clamp(3rem, 7vw, 7rem);
+    }
+
+    :global(.company-preview__mark) {
+      min-height: 38rem;
+    }
+  }
+</style>

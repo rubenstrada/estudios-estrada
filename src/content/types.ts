@@ -55,3 +55,9 @@ export interface CompanyPrinciple {
   title: string;
   description: string;
 }
+
+export interface MediaItem {
+  id: string;
+  kicker: string;
+  title: string;
+}

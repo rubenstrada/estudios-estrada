@@ -18,6 +18,15 @@ export default defineConfig(
   ...tseslint.configs.recommended,
   ...astro.configs.recommended,
   {
+    files: ["**/*.astro"],
+    languageOptions: {
+      globals: globals.browser,
+    },
+    rules: {
+      "no-undef": "off",
+    },
+  },
+  {
     files: ["**/*.{js,mjs,ts}"],
     languageOptions: {
       globals: {

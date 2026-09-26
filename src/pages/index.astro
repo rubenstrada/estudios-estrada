@@ -1,15 +1,27 @@
 ---
 import { pageSeo } from "../content/pages";
+import { filmRailItems } from "../content/home";
+import FilmRail from "../components/motion/FilmRail.astro";
+import CompanyIntroduction from "../components/sections/home/CompanyIntroduction.astro";
+import CompanyPreview from "../components/sections/home/CompanyPreview.astro";
+import HomeHero from "../components/sections/home/HomeHero.astro";
+import Reasons from "../components/sections/home/Reasons.astro";
+import ServiceChoices from "../components/sections/home/ServiceChoices.astro";
+import ClosingCta from "../components/sections/shared/ClosingCta.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const seo = pageSeo["/"];
 ---
 
 <BaseLayout title={seo.title} description={seo.description} canonicalPath="/">
-  <section class="site-section">
-    <div class="site-container">
-      <h1>Estudios Estrada</h1>
-      <p>Fotografía y producción audiovisual.</p>
-    </div>
-  </section>
+  <HomeHero />
+  <FilmRail items={filmRailItems} label="Servicios de Estudios Estrada" />
+  <CompanyIntroduction />
+  <ServiceChoices />
+  <Reasons />
+  <CompanyPreview />
+  <ClosingCta
+    title="Cuéntanos qué quieres crear o conservar."
+    body="Comparte el tipo de sesión, evento o producción que tienes en mente y revisamos contigo la disponibilidad y el alcance."
+  />
 </BaseLayout>

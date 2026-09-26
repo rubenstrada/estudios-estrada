@@ -1,0 +1,115 @@
+---
+import type { MediaItem } from "../../content/types";
+
+interface Props {
+  items: readonly MediaItem[];
+  label: string;
+  speed?: "slow" | "medium";
+}
+
+const { items, label, speed = "slow" } = Astro.props;
+---
+
+<div class:list={["film-rail", `film-rail--${speed}`]} aria-label={label}>
+  <ul class="film-rail__track" data-film-track>
+    {items.map((item) => (
+      <li class="film-frame">
+        <span>{item.kicker}</span>
+        <strong>{item.title}</strong>
+      </li>
+    ))}
+    {items.map((item) => (
+      <li class="film-frame" aria-hidden="true">
+        <span>{item.kicker}</span>
+        <strong>{item.title}</strong>
+      </li>
+    ))}
+  </ul>
+</div>
+
+<style>
+  .film-rail {
+    overflow: hidden;
+    border-block: 1px solid var(--color-border-dark);
+    background: var(--color-ink-soft);
+    color: var(--color-ivory);
+  }
+
+  .film-rail__track {
+    display: flex;
+    width: max-content;
+    margin: 0;
+    padding: 0;
+    animation: film-drift var(--film-duration) linear infinite;
+    list-style: none;
+  }
+
+  .film-rail--slow {
+    --film-duration: 36s;
+  }
+
+  .film-rail--medium {
+    --film-duration: 24s;
+  }
+
+  .film-frame {
+    position: relative;
+    display: grid;
+    width: clamp(12rem, 25vw, 20rem);
+    min-height: 7rem;
+    align-content: center;
+    gap: 0.25rem;
+    padding: 1.5rem 2rem;
+    border-right: 1px solid var(--color-border-dark);
+  }
+
+  .film-frame::before,
+  .film-frame::after {
+    position: absolute;
+    left: 1rem;
+    width: 0.7rem;
+    height: 0.38rem;
+    border-radius: 0.08rem;
+    background: var(--color-gold);
+    content: "";
+  }
+
+  .film-frame::before {
+    top: 0.65rem;
+  }
+
+  .film-frame::after {
+    bottom: 0.65rem;
+  }
+
+  .film-frame span {
+    color: var(--color-gold-bright);
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+  }
+
+  .film-frame strong {
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 3vw, 2rem);
+    font-weight: 500;
+  }
+
+  .film-rail:hover .film-rail__track,
+  .film-rail:focus-within .film-rail__track {
+    animation-play-state: paused;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .film-rail {
+      overflow-x: auto;
+    }
+
+    .film-rail__track {
+      animation-name: none;
+    }
+
+    .film-frame[aria-hidden="true"] {
+      display: none;
+    }
+  }
+</style>

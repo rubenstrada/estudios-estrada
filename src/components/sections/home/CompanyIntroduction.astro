@@ -1,0 +1,99 @@
+---
+import Reveal from "../../motion/Reveal.astro";
+---
+
+<section
+  class="company-introduction site-section"
+  data-home-section="introduction"
+>
+  <div class="company-introduction__grid site-container">
+    <Reveal as="div" distance="small">
+      <p class="eyebrow">La imagen como parte de tu historia</p>
+    </Reveal>
+    <Reveal as="div" delay={80}>
+      <h2>Una empresa para proyectos que merecen atención.</h2>
+      <p>
+        En Estudios Estrada reunimos fotografía y producción audiovisual para
+        atender desde una sesión personal hasta la cobertura de un evento o la
+        comunicación visual de una empresa. Escuchamos, planeamos y producimos
+        de acuerdo con lo que cada proyecto necesita.
+      </p>
+    </Reveal>
+    <Reveal
+      as="ul"
+      class="company-introduction__disciplines"
+      delay={160}
+      distance="small"
+    >
+      <li>
+        <span>01</span> Fotografía
+      </li>
+      <li>
+        <span>02</span> Eventos
+      </li>
+      <li>
+        <span>03</span> Video
+      </li>
+    </Reveal>
+  </div>
+</section>
+
+<style>
+  .company-introduction {
+    background: var(--color-paper);
+  }
+
+  .company-introduction__grid {
+    display: grid;
+    gap: 2rem;
+  }
+
+  h2 {
+    max-width: 52rem;
+    font-size: clamp(2.8rem, 7vw, 6.4rem);
+    letter-spacing: -0.05em;
+  }
+
+  h2 + p {
+    max-width: 42rem;
+    margin-top: 1.75rem;
+    color: var(--color-muted);
+    font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  }
+
+  :global(.company-introduction__disciplines) {
+    display: grid;
+    margin: 1rem 0 0;
+    padding: 0;
+    border-top: 1px solid var(--color-border);
+    list-style: none;
+  }
+
+  .company-introduction__disciplines li {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block: 1rem;
+    border-bottom: 1px solid var(--color-border);
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+  }
+
+  .company-introduction__disciplines span {
+    color: var(--color-gold);
+    font-family: var(--font-body);
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+  }
+
+  @media (min-width: 64rem) {
+    .company-introduction__grid {
+      grid-template-columns: 0.6fr 2fr 0.8fr;
+      align-items: start;
+    }
+
+    :global(.company-introduction__disciplines) {
+      margin-top: 0;
+    }
+  }
+</style>

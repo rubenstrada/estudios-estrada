@@ -1,0 +1,60 @@
+---
+import type { AvailabilityInquiry } from "../../../lib/whatsapp";
+import Reveal from "../../motion/Reveal.astro";
+import AvailabilityLink from "../../ui/AvailabilityLink.astro";
+
+interface Props {
+  title: string;
+  body: string;
+  inquiry?: AvailabilityInquiry;
+  tone?: "dark" | "light";
+}
+
+const { title, body, inquiry, tone = "dark" } = Astro.props;
+---
+
+<section
+  class:list={["closing-cta", `closing-cta--${tone}`, "site-section"]}
+  data-home-section="closing"
+>
+  <Reveal as="div" class="closing-cta__inner site-container">
+    <p class="eyebrow">Tu proyecto comienza con una conversación</p>
+    <h2>{title}</h2>
+    <p>{body}</p>
+    <AvailabilityLink placement="page" {inquiry} />
+  </Reveal>
+</section>
+
+<style>
+  .closing-cta {
+    text-align: center;
+  }
+
+  .closing-cta--dark {
+    background: var(--gradient-dark);
+    color: var(--color-ivory);
+  }
+
+  .closing-cta--light {
+    background: var(--color-ivory);
+    color: var(--color-ink);
+  }
+
+  :global(.closing-cta__inner) {
+    display: grid;
+    max-width: 58rem;
+    justify-items: center;
+    gap: 1.4rem;
+  }
+
+  h2 {
+    font-size: clamp(3rem, 8vw, 7rem);
+    letter-spacing: -0.055em;
+  }
+
+  h2 + p {
+    max-width: 38rem;
+    color: color-mix(in srgb, currentColor 68%, transparent);
+    font-size: 1.1rem;
+  }
+</style>
