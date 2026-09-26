@@ -83,9 +83,9 @@ describe("project configuration", () => {
     };
 
     expect(readFileSync(resolve(root, ".nvmrc"), "utf8").trim()).toBe(
-      "22.13.0",
+      "22.19.0",
     );
-    expect(packageJson.engines?.node).toBe(">=22.13.0");
+    expect(packageJson.engines?.node).toBe(">=22.19.0");
     expect(packageJson.scripts?.deploy).toBe("wrangler deploy");
     expect(packageJson.devDependencies?.wrangler).toBeTruthy();
   });
