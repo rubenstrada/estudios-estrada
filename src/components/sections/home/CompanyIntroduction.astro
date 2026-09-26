@@ -40,17 +40,29 @@ import Reveal from "../../motion/Reveal.astro";
 
 <style>
   .company-introduction {
+    position: relative;
     background: var(--color-paper);
+  }
+
+  .company-introduction::before {
+    position: absolute;
+    top: clamp(2rem, 5vw, 4rem);
+    left: 50%;
+    width: min(calc(100% - 2rem), var(--container));
+    height: 1px;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, var(--color-gold), transparent 40%);
+    content: "";
   }
 
   .company-introduction__grid {
     display: grid;
-    gap: 2rem;
+    gap: clamp(2rem, 5vw, 4.5rem);
   }
 
   h2 {
     max-width: 52rem;
-    font-size: clamp(2.8rem, 7vw, 6.4rem);
+    font-size: clamp(2.8rem, 6.5vw, 5.9rem);
     letter-spacing: -0.05em;
   }
 
@@ -65,7 +77,7 @@ import Reveal from "../../motion/Reveal.astro";
     display: grid;
     margin: 1rem 0 0;
     padding: 0;
-    border-top: 1px solid var(--color-border);
+    border-top: 1px solid var(--color-border-strong);
     list-style: none;
   }
 
@@ -80,7 +92,7 @@ import Reveal from "../../motion/Reveal.astro";
   }
 
   .company-introduction__disciplines span {
-    color: var(--color-gold);
+    color: var(--color-sepia);
     font-family: var(--font-body);
     font-size: 0.68rem;
     letter-spacing: 0.14em;
@@ -88,7 +100,7 @@ import Reveal from "../../motion/Reveal.astro";
 
   @media (min-width: 64rem) {
     .company-introduction__grid {
-      grid-template-columns: 0.6fr 2fr 0.8fr;
+      grid-template-columns: 0.55fr 2fr 0.75fr;
       align-items: start;
     }
 

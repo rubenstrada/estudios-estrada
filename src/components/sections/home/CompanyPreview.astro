@@ -8,11 +8,17 @@ import ButtonLink from "../../ui/ButtonLink.astro";
   <div class="company-preview__grid site-container">
     <Reveal as="div" class="company-preview__mark">
       <BrandLogo variant="dark-amber" class="company-preview__logo" />
+      <div class="company-preview__frames" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <p>Fotografía · video · eventos</p>
     </Reveal>
 
     <Reveal as="div" class="company-preview__content" delay={80}>
       <p class="eyebrow">Quiénes somos</p>
-      <h2>Un estudio que trabaja como parte de tu proyecto.</h2>
+      <h2>Un estudio que se integra a tu proyecto.</h2>
       <p>
         Nos interesa entender qué necesitas comunicar o conservar. Por eso
         nuestro trabajo comienza con una conversación y continúa con un proceso
@@ -28,7 +34,10 @@ import ButtonLink from "../../ui/ButtonLink.astro";
 <style>
   .company-preview {
     overflow: hidden;
-    background: var(--color-paper);
+    border-top: 1px solid var(--color-border);
+    background:
+      radial-gradient(circle at 78% 18%, rgb(232 209 164 / 32%), transparent 22rem),
+      var(--color-ivory);
   }
 
   .company-preview__grid {
@@ -43,13 +52,22 @@ import ButtonLink from "../../ui/ButtonLink.astro";
     min-height: 24rem;
     place-items: center;
     overflow: hidden;
-    border-radius: var(--radius-lg);
-    background: linear-gradient(150deg, #f2e7cf, #d7aa53 210%);
+    border: 1px solid var(--color-border-strong);
+    border-radius: 0.45rem;
+    background:
+      linear-gradient(rgb(121 84 50 / 5%) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(121 84 50 / 5%) 1px, transparent 1px),
+      linear-gradient(150deg, #f6ebd9, #d6aa68 180%);
+    background-size:
+      3.5rem 3.5rem,
+      3.5rem 3.5rem,
+      auto;
+    box-shadow: var(--shadow-card);
   }
 
   .company-preview__mark::before {
     position: absolute;
-    width: 90%;
+    width: 86%;
     aspect-ratio: 1;
     border: 1px solid rgb(11 11 12 / 12%);
     border-radius: 50%;
@@ -58,8 +76,54 @@ import ButtonLink from "../../ui/ButtonLink.astro";
 
   :global(.company-preview__logo) {
     position: relative;
+    z-index: 2;
     width: min(78%, 25rem);
     height: auto;
+  }
+
+  .company-preview__frames {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .company-preview__frames span {
+    position: absolute;
+    width: 7rem;
+    aspect-ratio: 4 / 3;
+    border: 0.35rem solid var(--color-paper);
+    background: linear-gradient(135deg, #b98240, #eedbbb);
+    box-shadow: 0 0.75rem 2rem rgb(73 44 20 / 16%);
+  }
+
+  .company-preview__frames span:nth-child(1) {
+    top: 8%;
+    right: 6%;
+    transform: rotate(7deg);
+  }
+
+  .company-preview__frames span:nth-child(2) {
+    bottom: 9%;
+    left: 5%;
+    transform: rotate(-8deg);
+  }
+
+  .company-preview__frames span:nth-child(3) {
+    right: 10%;
+    bottom: 15%;
+    width: 5rem;
+    transform: rotate(4deg);
+  }
+
+  .company-preview__mark > p {
+    position: absolute;
+    z-index: 3;
+    bottom: 1rem;
+    color: var(--color-sepia);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
   }
 
   :global(.company-preview__content) {
@@ -85,7 +149,7 @@ import ButtonLink from "../../ui/ButtonLink.astro";
     }
 
     :global(.company-preview__mark) {
-      min-height: 38rem;
+      min-height: 35rem;
     }
   }
 </style>

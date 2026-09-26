@@ -5,7 +5,7 @@ import SectionHeading from "../../ui/SectionHeading.astro";
 ---
 
 <section
-  class="reasons site-section site-section--dark"
+  class="reasons site-section site-section--paper"
   data-home-section="reasons"
 >
   <div class="site-container">
@@ -35,11 +35,31 @@ import SectionHeading from "../../ui/SectionHeading.astro";
 </section>
 
 <style>
+  .reasons {
+    position: relative;
+    overflow: hidden;
+    background:
+      linear-gradient(90deg, rgb(121 84 50 / 5%) 1px, transparent 1px),
+      var(--color-paper);
+    background-size: min(25vw, 19rem) 100%;
+  }
+
+  .reasons::after {
+    position: absolute;
+    top: 0;
+    right: clamp(1rem, 4vw, 4rem);
+    width: 0.55rem;
+    height: 6rem;
+    background: var(--color-gold);
+    content: "";
+    opacity: 0.72;
+  }
+
   .reasons__list {
     display: grid;
     margin: clamp(3rem, 7vw, 6rem) 0 0;
     padding: 0;
-    border-top: 1px solid var(--color-border-dark);
+    border-top: 1px solid var(--color-border-strong);
     list-style: none;
   }
 
@@ -48,11 +68,11 @@ import SectionHeading from "../../ui/SectionHeading.astro";
     grid-template-columns: 3rem 1fr;
     gap: 1rem;
     padding-block: 1.6rem;
-    border-bottom: 1px solid var(--color-border-dark);
+    border-bottom: 1px solid var(--color-border);
   }
 
   .reasons__list span {
-    color: var(--color-gold-bright);
+    color: var(--color-sepia);
     font-size: 0.72rem;
     letter-spacing: 0.14em;
   }
@@ -64,19 +84,25 @@ import SectionHeading from "../../ui/SectionHeading.astro";
   h3 + p {
     max-width: 34rem;
     margin-top: 0.65rem;
-    color: rgb(246 242 233 / 64%);
+    color: var(--color-muted);
   }
 
   @media (min-width: 54rem) {
     .reasons__list {
       grid-template-columns: repeat(2, 1fr);
-      border-left: 1px solid var(--color-border-dark);
+      border-left: 1px solid var(--color-border);
     }
 
     .reasons__list :global(.reveal) {
       min-height: 12rem;
       padding: 2rem;
-      border-right: 1px solid var(--color-border-dark);
+      border-right: 1px solid var(--color-border);
+    }
+  }
+
+  @media (min-width: 72rem) {
+    .reasons__list {
+      grid-template-columns: repeat(4, 1fr);
     }
   }
 </style>
