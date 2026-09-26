@@ -14,14 +14,22 @@ const { items, label, speed = "slow" } = Astro.props;
   <ul class="film-rail__track" data-film-track>
     {items.map((item) => (
       <li class="film-frame">
-        <span>{item.kicker}</span>
-        <strong>{item.title}</strong>
+        <a class="film-frame__link" href={item.href}>
+          <span class="film-frame__number">{item.kicker}</span>
+          <strong>{item.title}</strong>
+          <span class="film-frame__arrow" aria-hidden="true">
+            ↗
+          </span>
+        </a>
       </li>
     ))}
     {items.map((item) => (
       <li class="film-frame" aria-hidden="true">
-        <span>{item.kicker}</span>
-        <strong>{item.title}</strong>
+        <div class="film-frame__link">
+          <span class="film-frame__number">{item.kicker}</span>
+          <strong>{item.title}</strong>
+          <span class="film-frame__arrow">↗</span>
+        </div>
       </li>
     ))}
   </ul>
@@ -29,10 +37,42 @@ const { items, label, speed = "slow" } = Astro.props;
 
 <style>
   .film-rail {
+    --film-stock: #b88842;
+    --film-frame: #f0e5d2;
+    --film-frame-light: #f8f1e5;
+    --film-line: rgb(92 59 16 / 24%);
+
+    position: relative;
     overflow: hidden;
-    border-block: 1px solid var(--color-border-dark);
-    background: var(--color-ink-soft);
-    color: var(--color-ivory);
+    padding-block: 0.85rem;
+    border-block: 1px solid rgb(92 59 16 / 24%);
+    background: var(--film-stock);
+    color: var(--color-ink);
+  }
+
+  .film-rail::before,
+  .film-rail::after {
+    position: absolute;
+    z-index: 2;
+    right: 0;
+    left: 0;
+    height: 0.62rem;
+    background: radial-gradient(
+        ellipse at center,
+        var(--color-paper) 0 43%,
+        transparent 47%
+      )
+      0 0 / 1.75rem 0.62rem repeat-x;
+    content: "";
+    pointer-events: none;
+  }
+
+  .film-rail::before {
+    top: 0.12rem;
+  }
+
+  .film-rail::after {
+    bottom: 0.12rem;
   }
 
   .film-rail__track {
@@ -40,8 +80,10 @@ const { items, label, speed = "slow" } = Astro.props;
     width: max-content;
     margin: 0;
     padding: 0;
+    border-block: 1px solid var(--film-line);
     animation: film-drift var(--film-duration) linear infinite;
     list-style: none;
+    will-change: transform;
   }
 
   .film-rail--slow {
@@ -53,50 +95,114 @@ const { items, label, speed = "slow" } = Astro.props;
   }
 
   .film-frame {
-    position: relative;
-    display: grid;
-    width: clamp(12rem, 25vw, 20rem);
-    min-height: 7rem;
-    align-content: center;
-    gap: 0.25rem;
-    padding: 1.5rem 2rem;
-    border-right: 1px solid var(--color-border-dark);
+    width: clamp(13rem, 24vw, 19rem);
+    min-height: 9rem;
+    border-right: 1px solid var(--film-line);
+    background: var(--film-frame);
   }
 
-  .film-frame::before,
-  .film-frame::after {
+  .film-frame:nth-child(even) {
+    background: var(--film-frame-light);
+  }
+
+  .film-frame__link {
+    position: relative;
+    display: grid;
+    height: 100%;
+    min-height: inherit;
+    align-content: center;
+    gap: 0.45rem;
+    padding: 1.5rem 2rem;
+    color: inherit;
+    text-decoration: none;
+    transition:
+      background-color 220ms ease,
+      color 220ms ease;
+  }
+
+  .film-frame__link::before,
+  .film-frame__link::after {
     position: absolute;
-    left: 1rem;
-    width: 0.7rem;
-    height: 0.38rem;
-    border-radius: 0.08rem;
+    left: 1.3rem;
+    width: 0.78rem;
+    height: 0.22rem;
+    border-radius: 999px;
     background: var(--color-gold);
     content: "";
   }
 
-  .film-frame::before {
-    top: 0.65rem;
+  .film-frame__link::before {
+    top: 0.85rem;
   }
 
-  .film-frame::after {
-    bottom: 0.65rem;
+  .film-frame__link::after {
+    bottom: 0.85rem;
   }
 
-  .film-frame span {
-    color: var(--color-gold-bright);
+  .film-frame__number {
+    color: #8b5c14;
     font-size: 0.68rem;
+    font-weight: 750;
     letter-spacing: 0.16em;
   }
 
   .film-frame strong {
     font-family: var(--font-display);
-    font-size: clamp(1.35rem, 3vw, 2rem);
+    font-size: clamp(1.8rem, 3.2vw, 2.65rem);
     font-weight: 500;
+    letter-spacing: -0.035em;
+  }
+
+  .film-frame__arrow {
+    position: absolute;
+    right: 1.2rem;
+    bottom: 1.1rem;
+    display: grid;
+    width: 2rem;
+    height: 2rem;
+    place-items: center;
+    border: 1px solid rgb(92 59 16 / 30%);
+    border-radius: 50%;
+    color: #8b5c14;
+    font-size: 0.85rem;
+    transition: transform 220ms ease;
+  }
+
+  a.film-frame__link:hover,
+  a.film-frame__link:focus-visible {
+    background: #ddc392;
+  }
+
+  a.film-frame__link:hover .film-frame__arrow,
+  a.film-frame__link:focus-visible .film-frame__arrow {
+    transform: translate(0.12rem, -0.12rem);
   }
 
   .film-rail:hover .film-rail__track,
   .film-rail:focus-within .film-rail__track {
     animation-play-state: paused;
+  }
+
+  @media (max-width: 47.99rem) {
+    .film-rail {
+      overflow-x: auto;
+      scroll-snap-type: x proximity;
+      scrollbar-color: var(--color-gold) transparent;
+      scrollbar-width: thin;
+    }
+
+    .film-rail__track {
+      animation-name: none;
+    }
+
+    .film-frame {
+      width: min(76vw, 18rem);
+      scroll-snap-align: start;
+    }
+
+    .film-frame[aria-hidden="true"] {
+      display: none;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {

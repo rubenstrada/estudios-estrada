@@ -1,11 +1,36 @@
 import type { CompanyPrinciple, MediaItem } from "./types";
 
 export const filmRailItems = [
-  { id: "retratos", kicker: "01", title: "Retratos" },
-  { id: "eventos", kicker: "02", title: "Eventos" },
-  { id: "empresas", kicker: "03", title: "Empresas" },
-  { id: "producto", kicker: "04", title: "Producto" },
-  { id: "video", kicker: "05", title: "Video" },
+  {
+    id: "retratos",
+    kicker: "01",
+    title: "Retratos",
+    href: "/fotografia-profesional",
+  },
+  {
+    id: "eventos",
+    kicker: "02",
+    title: "Eventos",
+    href: "/eventos-y-video",
+  },
+  {
+    id: "empresas",
+    kicker: "03",
+    title: "Empresas",
+    href: "/fotografia-profesional",
+  },
+  {
+    id: "producto",
+    kicker: "04",
+    title: "Producto",
+    href: "/fotografia-profesional",
+  },
+  {
+    id: "video",
+    kicker: "05",
+    title: "Video",
+    href: "/eventos-y-video",
+  },
 ] as const satisfies readonly MediaItem[];
 
 export const reasons = [

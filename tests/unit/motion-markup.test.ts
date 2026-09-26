@@ -40,16 +40,37 @@ describe("accessible motion markup", () => {
       props: {
         label: "Servicios de Estudios Estrada",
         items: [
-          { id: "foto", kicker: "01", title: "Fotografía profesional" },
-          { id: "eventos", kicker: "02", title: "Cobertura de eventos" },
-          { id: "video", kicker: "03", title: "Producción de video" },
+          {
+            id: "foto",
+            kicker: "01",
+            title: "Fotografía profesional",
+            href: "/fotografia-profesional",
+          },
+          {
+            id: "eventos",
+            kicker: "02",
+            title: "Cobertura de eventos",
+            href: "/eventos-y-video",
+          },
+          {
+            id: "video",
+            kicker: "03",
+            title: "Producción de video",
+            href: "/eventos-y-video",
+          },
         ],
       },
     });
 
     expect(html).toContain('aria-label="Servicios de Estudios Estrada"');
-    expect(html.match(/aria-hidden="true"/g)).toHaveLength(3);
+    expect(html.match(/class="film-frame" aria-hidden="true"/g)).toHaveLength(
+      3,
+    );
     expect(html.match(/Fotografía profesional/g)).toHaveLength(2);
+    expect(html.match(/<a /g)).toHaveLength(3);
+    expect(html).toContain('href="/fotografia-profesional"');
+    expect(html.match(/href="\/eventos-y-video"/g)).toHaveLength(2);
+    expect(html).not.toContain("<img");
     expect(html).not.toContain("<button");
   });
 });

@@ -65,4 +65,5 @@ export interface MediaItem {
   id: string;
   kicker: string;
   title: string;
+  href: RoutePath;
 }
