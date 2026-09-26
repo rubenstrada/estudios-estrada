@@ -49,6 +49,10 @@ const { title, body, inquiry, tone = "dark" } = Astro.props;
     color: var(--color-ivory);
   }
 
+  .closing-cta--dark :global(.eyebrow) {
+    color: var(--color-gold-bright);
+  }
+
   .closing-cta--dark::before,
   .closing-cta--dark::after {
     position: absolute;
