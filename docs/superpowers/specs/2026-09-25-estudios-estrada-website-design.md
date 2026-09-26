@@ -1,7 +1,8 @@
 # Estudios Estrada Website Design
 
 **Date:** 2026-09-25  
-**Status:** Conversational design approved; pending written-spec review  
+**Status:** Approved for implementation planning
+
 **Product owner:** Estudios Estrada
 
 ## 1. Purpose
