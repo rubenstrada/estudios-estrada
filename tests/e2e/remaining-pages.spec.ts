@@ -7,6 +7,9 @@ test("presents the Estudios Estrada team and process", async ({ page }) => {
   await expect(
     page.getByRole("img", { name: "Equipo de Estudios Estrada" }),
   ).toBeVisible();
+  const teamPhotoFrame = page.locator("[data-editorial-photo-frame]");
+  await expect(teamPhotoFrame).toBeVisible();
+  await expect(teamPhotoFrame).toHaveText("");
   await expect(page.locator("[data-company-principle]")).toHaveCount(4);
   await expect(
     page

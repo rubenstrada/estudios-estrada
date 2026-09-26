@@ -25,7 +25,9 @@ const {
 } = Astro.props;
 ---
 
-<section class="editorial-page-hero">
+<section
+  class:list={["editorial-page-hero", { "editorial-page-hero--image": image }]}
+>
   <div class="editorial-page-hero__grid site-container">
     <Reveal as="div" class="editorial-page-hero__content" distance="small">
       <p class="eyebrow">{eyebrow}</p>
@@ -37,8 +39,9 @@ const {
       as="div"
       class={`editorial-page-hero__visual${image ? " editorial-page-hero__visual--image" : ""}`}
       delay={160}
+      data-editorial-photo-frame={image ? "" : undefined}
     >
-      <span>{index}</span>
+      {!image && <span>{index}</span>}
       {image ? (
         <Image
           src={image}
@@ -52,7 +55,7 @@ const {
       ) : (
         <strong aria-hidden="true">EE</strong>
       )}
-      <p>{caption}</p>
+      {!image && <p>{caption}</p>}
     </Reveal>
   </div>
 </section>
@@ -157,6 +160,11 @@ const {
     background: var(--color-paper);
   }
 
+  :global(.editorial-page-hero__visual--image)::before,
+  :global(.editorial-page-hero__visual--image)::after {
+    display: none;
+  }
+
   :global(.editorial-page-hero__image) {
     position: absolute;
     z-index: 1;
@@ -196,6 +204,11 @@ const {
 
     :global(.editorial-page-hero__visual--image) {
       min-height: 0;
+    }
+
+    .editorial-page-hero--image .editorial-page-hero__grid {
+      grid-template-columns: minmax(0, 1.05fr) minmax(28rem, 0.95fr);
+      gap: clamp(3rem, 6vw, 6rem);
     }
   }
 </style>
